@@ -7,17 +7,6 @@ DROP TABLE Deliveries CASCADE;
 DROP TABLE Provision CASCADE;
 
 ---------------< For create table in database >-----------------
-CREATE TABLE IF NOT EXISTS Products (
-	id_product        SERIAL PRIMARY KEY,
-	name_product      TEXT NOT NULL,
-	charact_prod      TEXT,
-	count_prod        INT NOT NULL,
-	date_prod         TIMESTAMPTZ NOT NULL,
-	storage_location  INT NOT NULL,
-	id_supplier       SERIAL NOT NULL,
-	status            TEXT NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS Type_client (
 	id_type   SERIAL PRIMARY KEY,
 	name_type TEXT NOT NULL,
@@ -43,6 +32,17 @@ CREATE TABLE IF NOT EXISTS Customers (
 	address        TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS Products (
+	id_product        SERIAL PRIMARY KEY,
+	name_product      TEXT NOT NULL,
+	type_prod         TEXT NOT NULL,
+	count_prod        INT NOT NULL,
+	unit_measure      TEXT NOT NULL,
+	date_prod         TIMESTAMPTZ NOT NULL,
+	storage_location  TEXT NOT NULL,
+	id_supplier       SERIAL REFERENCES Suppliers ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS Deliveries (
 	id_deliveries  SERIAL PRIMARY KEY,
 	id_product     SERIAL REFERENCES Products ON DELETE CASCADE,
@@ -58,5 +58,6 @@ CREATE TABLE IF NOT EXISTS Provision (
 	id_customer    SERIAL REFERENCES Customers ON DELETE CASCADE,
 	count_prod     INT NOT NULL,
 	date_prov      TIMESTAMPTZ NOT NULL,
-	status         TEXT NOT NULL
+	status         TEXT NOT NULL,
+	CONSTRAINT valid_status CHECK (status = 'завершен' OR status = 'в процессе')
 );
