@@ -26,34 +26,34 @@ public class DeliveriesTest {
 
     @Test
     public void testCreateNewDelivery() {
-        Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_product());
+        Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery, realDelivery);
     }
 
     @Test
     public void testUpdateDelivery() {
-        Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_product());
+        Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery, realDelivery);
 
         expectedDelivery.setCount_prod(21);
         deliveryService.updateDelivery(expectedDelivery);
-        realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_product());
+        realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery, realDelivery);
     }
 
     @Test
     public void testDeleteDelivery() {
-        Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_product());
+        Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery, realDelivery);
 
         deliveryService.deleteDelivery(expectedDelivery);
-        realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_product());
+        realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery, realDelivery);
     }
 
     @Test
     public void testReadDeliveryById() {
-        Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_product());
+        Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery.getId_deliveries(), realDelivery.getId_deliveries());
     }
 

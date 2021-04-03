@@ -26,35 +26,35 @@ public class ProvisionTest {
 
     @Test
     public void testCreateNewProvision() {
-        Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_product());
+        Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
     }
 
     @Test
     public void testUpdateProvision() {
-        Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_product());
+        Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
 
         expectedProvision.setCount_prod(21);
         provisionService.updateProvision(expectedProvision);
-        realProvision = provisionService.readProvisionById(expectedProvision.getId_product());
+        realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
     }
 
     @Test
     public void testDeleteProvision() {
-        Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_product());
+        Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
 
         provisionService.deleteProvision(expectedProvision);
-        realProvision = provisionService.readProvisionById(expectedProvision.getId_product());
+        realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
     }
 
     @Test
     public void testReadProvisionById() {
-        Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_product());
-        assertEquals(expectedProvision.getId_product(), realProvision.getId_product());
+        Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
+        assertEquals(expectedProvision.getId_product(), realProvision.getId_provision());
     }
 
     @Test
