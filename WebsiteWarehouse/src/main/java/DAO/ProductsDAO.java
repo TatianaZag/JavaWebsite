@@ -9,7 +9,7 @@ public interface ProductsDAO {
     void update(Products product);
     void delete(Products product);
     Products readById(int id);
-    List<Products> readByStorageLocation(int num_storage);
+    List<Products> readByStorageLocation(String num_storage);
     List<Products> readByTypeProduct(String type);
     List<Products> readByDate(Date date);
 }

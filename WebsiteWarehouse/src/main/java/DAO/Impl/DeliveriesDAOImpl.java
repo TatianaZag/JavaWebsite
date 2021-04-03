@@ -12,41 +12,29 @@ import java.util.List;
 public class DeliveriesDAOImpl implements DeliveriesDAO {
     @Override
     public void create(Deliveries deliveries) {
-        try {
-            Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-            Transaction tx1 = session.beginTransaction();
-            session.save(deliveries);
-            tx1.commit();
-            session.close();
-        } catch (Exception tmp) {
-            System.out.println("Deliveries Create Exception thrown: " + tmp.getMessage());
-        }
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.save(deliveries);
+        tx1.commit();
+        session.close();
     }
 
     @Override
     public void update(Deliveries deliveries) {
-        try {
-            Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-            Transaction tx1 = session.beginTransaction();
-            session.update(deliveries);
-            tx1.commit();
-            session.close();
-        } catch (Exception tmp) {
-            System.out.println("Deliveries Update Exception thrown: " + tmp.getMessage());
-        }
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.update(deliveries);
+        tx1.commit();
+        session.close();
     }
 
     @Override
     public void delete(Deliveries deliveries) {
-        try {
-            Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-            Transaction tx1 = session.beginTransaction();
-            session.delete(deliveries);
-            tx1.commit();
-            session.close();
-        } catch (Exception tmp) {
-            System.out.println("Deliveries Delete Exception thrown: " + tmp.getMessage());
-        }
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.delete(deliveries);
+        tx1.commit();
+        session.close();
     }
 
     @Override
@@ -62,6 +50,7 @@ public class DeliveriesDAOImpl implements DeliveriesDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Deliveries> query = session.createQuery("FROM Deliveries WHERE id_product = :param", Deliveries.class)
                 .setParameter("param", id);
+        session.close();
         return query.getResultList();
     }
 
@@ -70,6 +59,7 @@ public class DeliveriesDAOImpl implements DeliveriesDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Deliveries> query = session.createQuery("FROM Deliveries WHERE id_supplier = :param", Deliveries.class)
                 .setParameter("param", id);
+        session.close();
         return query.getResultList();
     }
 }

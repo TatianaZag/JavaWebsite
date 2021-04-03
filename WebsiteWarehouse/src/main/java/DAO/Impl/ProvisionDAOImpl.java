@@ -12,41 +12,29 @@ import java.util.List;
 public class ProvisionDAOImpl implements ProvisionDAO {
     @Override
     public void create(Provision provision) {
-        try {
-            Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-            Transaction tx1 = session.beginTransaction();
-            session.save(provision);
-            tx1.commit();
-            session.close();
-        } catch (Exception tmp) {
-            System.out.println("Provision Create Exception thrown: " + tmp.getMessage());
-        }
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.save(provision);
+        tx1.commit();
+        session.close();
     }
 
     @Override
     public void update(Provision provision) {
-        try {
-            Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-            Transaction tx1 = session.beginTransaction();
-            session.update(provision);
-            tx1.commit();
-            session.close();
-        } catch (Exception tmp) {
-            System.out.println("Provision Update Exception thrown: " + tmp.getMessage());
-        }
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.update(provision);
+        tx1.commit();
+        session.close();
     }
 
     @Override
     public void delete(Provision provision) {
-        try {
-            Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-            Transaction tx1 = session.beginTransaction();
-            session.delete(provision);
-            tx1.commit();
-            session.close();
-        } catch (Exception tmp) {
-            System.out.println("Provision Delete Exception thrown: " + tmp.getMessage());
-        }
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.delete(provision);
+        tx1.commit();
+        session.close();
     }
 
     @Override
@@ -62,6 +50,7 @@ public class ProvisionDAOImpl implements ProvisionDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Provision> query = session.createQuery("FROM Provision WHERE id_product = :param", Provision.class)
                 .setParameter("param", id);
+        session.close();
         return query.getResultList();
     }
 
@@ -70,6 +59,7 @@ public class ProvisionDAOImpl implements ProvisionDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Provision> query = session.createQuery("FROM Provision WHERE id_product = :param", Provision.class)
                 .setParameter("param", id);
+        session.close();
         return query.getResultList();
     }
 }

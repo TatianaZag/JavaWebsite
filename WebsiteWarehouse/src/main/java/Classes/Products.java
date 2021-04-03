@@ -2,6 +2,7 @@ package Classes;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "products")
@@ -10,14 +11,18 @@ public class Products {
     public Products() {
     }
 
-    public Products(int id_product, String name_product, String type_prod, int count_prod, String unit_measure, Date date_prod, int id_supplier) {
+    public Products(int id_product, String name_product, String type_prod, int count_prod, String unit_measure, Date date_prod, String storage_location, int id_supplier) {
         this.id_product = id_product;
         this.name_product = name_product;
         this.type_prod = type_prod;
         this.count_prod = count_prod;
         this.unit_measure = unit_measure;
         this.date_prod = date_prod;
+        this.storage_location = storage_location;
         this.id_supplier = id_supplier;
+    }
+
+    public Products(int id_product, String jack_daniels, String алкоголь, int count_prod, String шт, LocalDate of, String f12, int id_supplier) {
     }
 
     @Id
@@ -70,6 +75,10 @@ public class Products {
     public void setDate_prod(Date date_prod) {
         this.date_prod = date_prod;
     }
+    
+    public String getStorage_location() { return storage_location; }
+    
+    public void setStorage_location(String storage_location) { this.storage_location = storage_location; }
 
     public int getId_supplier() {
         return id_supplier;
@@ -85,5 +94,6 @@ public class Products {
     private int count_prod;
     private String unit_measure;
     private Date date_prod;
+    private String storage_location;
     private int id_supplier;
 }
