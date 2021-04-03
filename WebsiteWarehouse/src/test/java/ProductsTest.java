@@ -14,6 +14,7 @@ public class ProductsTest {
 
     @Before
     public void setUp() {
+        productService = new ProductsServices();
         expectedProduct = new Products(1,
                 "Jack Daniels",
                 "алкоголь",
@@ -22,7 +23,7 @@ public class ProductsTest {
                 java.sql.Date.valueOf("2020-12-30"),
                 "F12",
                 2);
-        productService = new ProductsServices(expectedProduct);
+        productService.createProduct(expectedProduct);
     }
 
     @Test
