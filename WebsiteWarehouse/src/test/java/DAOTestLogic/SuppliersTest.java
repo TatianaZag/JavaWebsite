@@ -1,19 +1,21 @@
-import Classes.Customers;
-import Classes.Suppliers;
-import Services.CustomersServices;
-import Services.SuppliersServices;
-import org.junit.*;
+package DAOTestLogic;
 
-import static org.junit.Assert.*;
+import Classes.Suppliers;
+import Services.SuppliersServices;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.*;
 
 public class SuppliersTest {
     private SuppliersServices supplierService;
     private Suppliers expectedSupplier;
 
-    @Before
+    @BeforeTest
     public void setUp() {
         supplierService = new SuppliersServices();
-        expectedSupplier = new Suppliers(1,
+        expectedSupplier = new Suppliers(8,
                 "Джейк",
                 1,
                 "Jk1000@gmail.com",
@@ -22,13 +24,13 @@ public class SuppliersTest {
         supplierService.createSupplier(expectedSupplier);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testCreateNewSupplier() {
         Suppliers realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier, realSupplier);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testUpdateSupplier() {
         Suppliers realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier, realSupplier);
@@ -39,7 +41,7 @@ public class SuppliersTest {
         assertEquals(expectedSupplier, realSupplier);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testDeleteSupplier() {
         Suppliers realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier, realSupplier);
@@ -49,13 +51,13 @@ public class SuppliersTest {
         assertEquals(expectedSupplier, realSupplier);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testReadByIdSupplier() {
         Suppliers realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier.getId_supplier(), realSupplier.getId_supplier());
     }
 
-    @After
+    @AfterTest
     public void afterTest() {
         supplierService.deleteSupplier(expectedSupplier);
 

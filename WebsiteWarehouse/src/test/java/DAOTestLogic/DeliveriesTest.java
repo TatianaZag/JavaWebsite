@@ -1,20 +1,24 @@
+package DAOTestLogic;
+
 import Classes.Deliveries;
 import Services.DeliveriesServices;
-import org.junit.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
 
 public class DeliveriesTest {
     private DeliveriesServices deliveryService;
     private Deliveries expectedDelivery;
 
-    @Before
+    @BeforeTest
     public void setUp() {
         deliveryService = new DeliveriesServices();
-        expectedDelivery = new Deliveries(1,
+        expectedDelivery = new Deliveries(6,
                 1,
                 3,
                 20,
@@ -24,13 +28,13 @@ public class DeliveriesTest {
         deliveryService.createDelivery(expectedDelivery);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testCreateNewDelivery() {
         Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery, realDelivery);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testUpdateDelivery() {
         Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery, realDelivery);
@@ -41,7 +45,7 @@ public class DeliveriesTest {
         assertEquals(expectedDelivery, realDelivery);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testDeleteDelivery() {
         Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery, realDelivery);
@@ -51,13 +55,13 @@ public class DeliveriesTest {
         assertEquals(expectedDelivery, realDelivery);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testReadDeliveryById() {
         Deliveries realDelivery = deliveryService.readDeliveryById(expectedDelivery.getId_deliveries());
         assertEquals(expectedDelivery.getId_deliveries(), realDelivery.getId_deliveries());
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testReadByIdSupplier() {
         DeliveriesServices deliveriesServices = new DeliveriesServices();
         Set<Deliveries> expectedDeliveries = Set.of(
@@ -71,7 +75,7 @@ public class DeliveriesTest {
         expectedDeliveries.clear();
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testReadByIdProduct1() {
         DeliveriesServices deliveriesServices = new DeliveriesServices();
         Set<Deliveries> expectedDeliveries = Set.of(
@@ -85,9 +89,7 @@ public class DeliveriesTest {
         expectedDeliveries.clear();
     }
 
-
-
-    @After
+    @AfterTest
     public void afterTest() {
         deliveryService.deleteDelivery(expectedDelivery);
     }

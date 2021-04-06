@@ -1,18 +1,23 @@
+package DAOTestLogic;
+
 import Services.ProductsServices;
-import org.junit.*;
+import org.testng.*;
 
 import Classes.Products;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.util.*;
 
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
 
 public class ProductsTest {
     private ProductsServices productService;
     private Products expectedProduct;
 
-    @Before
+    @BeforeTest
     public void setUp() {
         productService = new ProductsServices();
         expectedProduct = new Products(1,
@@ -101,7 +106,7 @@ public class ProductsTest {
         expectedProducts.clear();
     }
 
-    @After
+    @AfterTest
     public void afterTest() {
         productService.deleteProduct(expectedProduct);
     }

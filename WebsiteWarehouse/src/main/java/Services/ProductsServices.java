@@ -10,9 +10,6 @@ import java.util.List;
 public class ProductsServices {
     private ProductsDAO productDAO = new ProductsDAOImpl();
     private Products product;
-    public ProductsServices(Products products) {
-        this.product = products;
-    }
 
     public ProductsServices() {
     }

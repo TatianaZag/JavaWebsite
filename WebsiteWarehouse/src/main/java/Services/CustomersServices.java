@@ -6,6 +6,8 @@ import DAO.Impl.CustomersDAOImpl;
 
 public class CustomersServices {
     private CustomersDAO customerDAO = new CustomersDAOImpl();
+    public CustomersServices() { }
+
     public void createCustomer(Customers customer) {
         customerDAO.create(customer);
     }

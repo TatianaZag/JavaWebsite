@@ -1,20 +1,24 @@
+package DAOTestLogic;
+
 import Classes.Provision;
 import Services.ProvisionServices;
-import org.junit.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class ProvisionTest {
     private ProvisionServices provisionService;
     private Provision expectedProvision;
 
-    @Before
+    @BeforeTest
     public void setUp() {
         provisionService = new ProvisionServices();
-        expectedProvision = new Provision(1,
+        expectedProvision = new Provision(6,
                 1,
                 3,
                 20,
@@ -24,13 +28,13 @@ public class ProvisionTest {
         provisionService.createProvision(expectedProvision);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testCreateNewProvision() {
         Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testUpdateProvision() {
         Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
@@ -41,7 +45,7 @@ public class ProvisionTest {
         assertEquals(expectedProvision, realProvision);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testDeleteProvision() {
         Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
@@ -51,13 +55,13 @@ public class ProvisionTest {
         assertEquals(expectedProvision, realProvision);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testReadProvisionById() {
         Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision.getId_product(), realProvision.getId_provision());
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testReadByIdCustomer() {
         ProvisionServices provisionServices = new ProvisionServices();
         Set<Provision> expectedProvisions = Set.of(
@@ -71,7 +75,7 @@ public class ProvisionTest {
         expectedProvisions.clear();
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testReadByIdProduct() {
         ProvisionServices provisionServices = new ProvisionServices();
         Set<Provision> expectedProvisions = Set.of(
@@ -85,9 +89,7 @@ public class ProvisionTest {
         expectedProvisions.clear();
     }
 
-
-
-    @After
+    @AfterTest
     public void afterTest() {
         provisionService.deleteProvision(expectedProvision);
     }

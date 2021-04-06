@@ -1,17 +1,20 @@
+package DAOTestLogic;
+
 import Classes.Customers;
 import Services.CustomersServices;
-import org.junit.*;
+import org.testng.annotations.*;
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
 
 public class CustomersTest {
     private CustomersServices customerService;
     private Customers expectedCustomer;
 
-    @Before
+
+    @BeforeTest
     public void setUp() {
         customerService = new CustomersServices();
-        expectedCustomer = new Customers(1,
+        expectedCustomer = new Customers(6,
                 "Маркус",
                 1,
                 "Marcus@gmail.com",
@@ -20,13 +23,13 @@ public class CustomersTest {
         customerService.createCustomer(expectedCustomer);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testCreateNewCustomer() {
         Customers realCustomer = customerService.readCustomerById(expectedCustomer.getId_customer());
         assertEquals(expectedCustomer, realCustomer);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testUpdateCustomer() {
         Customers realCustomer = customerService.readCustomerById(expectedCustomer.getId_customer());
         assertEquals(expectedCustomer, realCustomer);
@@ -37,7 +40,7 @@ public class CustomersTest {
         assertEquals(expectedCustomer, realCustomer);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testDeleteCustomer() {
         Customers realCustomer = customerService.readCustomerById(expectedCustomer.getId_customer());
         assertEquals(expectedCustomer, realCustomer);
@@ -47,13 +50,13 @@ public class CustomersTest {
         assertEquals(expectedCustomer, realCustomer);
     }
 
-    @Test
+    @Test(alwaysRun = true)
     public void testReadByIdCustomer() {
         Customers realCustomer = customerService.readCustomerById(expectedCustomer.getId_customer());
         assertEquals(expectedCustomer.getId_customer(), realCustomer.getId_customer());
     }
 
-    @After
+    @AfterTest
     public void afterTest() {
         customerService.deleteCustomer(expectedCustomer);
 

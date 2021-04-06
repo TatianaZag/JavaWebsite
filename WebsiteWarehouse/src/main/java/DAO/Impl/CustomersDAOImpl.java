@@ -12,6 +12,7 @@ public class CustomersDAOImpl implements CustomersDAO {
         Transaction tx1 = session.beginTransaction();
         session.save(customer);
         tx1.commit();
+        //session.flush();
         session.close();
     }
 
@@ -20,6 +21,7 @@ public class CustomersDAOImpl implements CustomersDAO {
         Transaction tx1 = session.beginTransaction();
         session.update(customer);
         tx1.commit();
+        //session.flush();
         session.close();
     }
 
@@ -28,6 +30,7 @@ public class CustomersDAOImpl implements CustomersDAO {
         Transaction tx1 = session.beginTransaction();
         session.delete(customer);
         tx1.commit();
+        //session.flush();
         session.close();
     }
 
@@ -35,6 +38,7 @@ public class CustomersDAOImpl implements CustomersDAO {
     public Customers readById(int id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Customers customer = session.get(Customers.class, id);
+        //session.flush();
         session.close();
         return customer;
     }
