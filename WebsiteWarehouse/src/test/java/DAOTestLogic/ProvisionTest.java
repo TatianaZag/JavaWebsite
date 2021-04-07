@@ -2,21 +2,21 @@ package DAOTestLogic;
 
 import Classes.Provision;
 import Services.ProvisionServices;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.Assert;
 
 import java.util.List;
 import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
 
 public class ProvisionTest {
     private ProvisionServices provisionService;
     private Provision expectedProvision;
 
-    @BeforeTest
-    public void setUp() {
+    @Test(alwaysRun = true)
+    public void testCreateNewProvision() {
         provisionService = new ProvisionServices();
         expectedProvision = new Provision(6,
                 1,
@@ -26,16 +26,25 @@ public class ProvisionTest {
                 "завершен"
         );
         provisionService.createProvision(expectedProvision);
-    }
 
-    @Test(alwaysRun = true)
-    public void testCreateNewProvision() {
         Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
+
+        provisionService.deleteProvision(expectedProvision);
     }
 
     @Test(alwaysRun = true)
     public void testUpdateProvision() {
+        provisionService = new ProvisionServices();
+        expectedProvision = new Provision(6,
+                1,
+                3,
+                20,
+                java.sql.Date.valueOf("2020-12-31"),
+                "завершен"
+        );
+        provisionService.createProvision(expectedProvision);
+
         Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
 
@@ -43,26 +52,60 @@ public class ProvisionTest {
         provisionService.updateProvision(expectedProvision);
         realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
+
+        provisionService.deleteProvision(expectedProvision);
     }
 
     @Test(alwaysRun = true)
     public void testDeleteProvision() {
+        provisionService = new ProvisionServices();
+        expectedProvision = new Provision(6,
+                1,
+                3,
+                20,
+                java.sql.Date.valueOf("2020-12-31"),
+                "завершен"
+        );
+        provisionService.createProvision(expectedProvision);
+
         Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision, realProvision);
 
         provisionService.deleteProvision(expectedProvision);
         realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
-        assertEquals(expectedProvision, realProvision);
+        assertNull(realProvision);
     }
 
     @Test(alwaysRun = true)
     public void testReadProvisionById() {
+        provisionService = new ProvisionServices();
+        expectedProvision = new Provision(6,
+                1,
+                3,
+                20,
+                java.sql.Date.valueOf("2020-12-31"),
+                "завершен"
+        );
+        provisionService.createProvision(expectedProvision);
+
         Provision realProvision = provisionService.readProvisionById(expectedProvision.getId_provision());
         assertEquals(expectedProvision.getId_product(), realProvision.getId_provision());
+
+        provisionService.deleteProvision(expectedProvision);
     }
 
     @Test(alwaysRun = true)
     public void testReadByIdCustomer() {
+        provisionService = new ProvisionServices();
+        expectedProvision = new Provision(6,
+                1,
+                3,
+                20,
+                java.sql.Date.valueOf("2020-12-31"),
+                "завершен"
+        );
+        provisionService.createProvision(expectedProvision);
+
         ProvisionServices provisionServices = new ProvisionServices();
         Set<Provision> expectedProvisions = Set.of(
                 expectedProvision,
@@ -73,10 +116,22 @@ public class ProvisionTest {
         List<Provision> realProvision = provisionServices.readProvisionByIdCustomer(3);
         assertEquals(realProvision.size() - 2, expectedProvisions.size());
         expectedProvisions.clear();
+
+        provisionService.deleteProvision(expectedProvision);
     }
 
     @Test(alwaysRun = true)
     public void testReadByIdProduct() {
+        provisionService = new ProvisionServices();
+        expectedProvision = new Provision(6,
+                1,
+                3,
+                20,
+                java.sql.Date.valueOf("2020-12-31"),
+                "завершен"
+        );
+        provisionService.createProvision(expectedProvision);
+
         ProvisionServices provisionServices = new ProvisionServices();
         Set<Provision> expectedProvisions = Set.of(
                 expectedProvision,
@@ -87,10 +142,7 @@ public class ProvisionTest {
         List<Provision> realProvision = provisionServices.readProvisionByIdProduct(1);
         assertEquals(realProvision.size() - 2, expectedProvisions.size());
         expectedProvisions.clear();
-    }
 
-    @AfterTest
-    public void afterTest() {
         provisionService.deleteProvision(expectedProvision);
     }
 }

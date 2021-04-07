@@ -2,17 +2,19 @@ package Classes;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "deliveries")
 public class Deliveries {
+    private Object fetchType;
+
     public Deliveries() {
     }
 
-    public Deliveries(int id_deliveries, int id_product, int supplier, int count_prod, Date date_deliver, int storage_time) {
-        this.id_deliveries = id_deliveries;
+    public Deliveries(Products id_product, Suppliers id_supplier, int count_prod, Date date_deliver, int storage_time) {
         this.id_product = id_product;
-        this.supplier = supplier;
+        this.id_supplier = id_supplier;
         this.count_prod = count_prod;
         this.date_deliver = date_deliver;
         this.storage_time = storage_time;
@@ -29,20 +31,24 @@ public class Deliveries {
         this.id_deliveries = id_deliveries;
     }
 
-    public int getId_product() {
+    @ManyToOne(targetEntity=Products.class)
+    @JoinColumn(name = "id_product")
+    public Products getId_product() {
         return id_product;
     }
 
-    public void setId_product(int id_product) {
+    public void setId_product(Products id_product) {
         this.id_product = id_product;
     }
 
-    public int getSupplier() {
-        return supplier;
+    @ManyToOne(targetEntity=Suppliers.class)
+    @JoinColumn(name = "id_supplier")
+    public Suppliers getSupplier() {
+        return id_supplier;
     }
 
-    public void setSupplier(int supplier) {
-        this.supplier = supplier;
+    public void setSupplier(Suppliers id_supplier) {
+        this.id_supplier = id_supplier;
     }
 
     public int getCount_prod() {
@@ -70,9 +76,23 @@ public class Deliveries {
     }
 
     private int id_deliveries;
-    private int id_product;
-    private int supplier;
+    private Products id_product;
+    private Suppliers id_supplier;
     private int count_prod;
     private Date date_deliver;
     private int storage_time;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Deliveries that = (Deliveries) o;
+        return id_deliveries == that.id_deliveries && count_prod == that.count_prod && storage_time == that.storage_time
+                && id_product.equals(that.id_product) && id_supplier.equals(that.id_supplier) && date_deliver.equals(that.date_deliver);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_deliveries, id_product, id_supplier, count_prod, date_deliver, storage_time);
+    }
 }

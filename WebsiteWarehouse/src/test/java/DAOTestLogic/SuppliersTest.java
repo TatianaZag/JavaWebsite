@@ -2,8 +2,6 @@ package DAOTestLogic;
 
 import Classes.Suppliers;
 import Services.SuppliersServices;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
@@ -12,26 +10,34 @@ public class SuppliersTest {
     private SuppliersServices supplierService;
     private Suppliers expectedSupplier;
 
-    @BeforeTest
-    public void setUp() {
+    @Test(alwaysRun = true)
+    public void testCreateNewSupplier() {
         supplierService = new SuppliersServices();
-        expectedSupplier = new Suppliers(8,
+        expectedSupplier = new Suppliers(
                 "Джейк",
                 1,
                 "Jk1000@gmail.com",
                 "8(777)2340056",
                 "г. Лос-Анджелес, ул. Смитта, д. 17, кв. 5");
         supplierService.createSupplier(expectedSupplier);
-    }
 
-    @Test(alwaysRun = true)
-    public void testCreateNewSupplier() {
         Suppliers realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier, realSupplier);
+
+        supplierService.deleteSupplier(expectedSupplier);
     }
 
     @Test(alwaysRun = true)
     public void testUpdateSupplier() {
+        supplierService = new SuppliersServices();
+        expectedSupplier = new Suppliers(
+                "Джейк",
+                1,
+                "Jk1000@gmail.com",
+                "8(777)2340056",
+                "г. Лос-Анджелес, ул. Смитта, д. 17, кв. 5");
+        supplierService.createSupplier(expectedSupplier);
+
         Suppliers realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier, realSupplier);
 
@@ -39,27 +45,43 @@ public class SuppliersTest {
         supplierService.updateSupplier(expectedSupplier);
         realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier, realSupplier);
+
+        supplierService.deleteSupplier(expectedSupplier);
     }
 
     @Test(alwaysRun = true)
     public void testDeleteSupplier() {
+        supplierService = new SuppliersServices();
+        expectedSupplier = new Suppliers(
+                "Джейк",
+                1,
+                "Jk1000@gmail.com",
+                "8(777)2340056",
+                "г. Лос-Анджелес, ул. Смитта, д. 17, кв. 5");
+        supplierService.createSupplier(expectedSupplier);
+
         Suppliers realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier, realSupplier);
 
         supplierService.deleteSupplier(expectedSupplier);
         realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
-        assertEquals(expectedSupplier, realSupplier);
+        assertNull(realSupplier);
     }
 
     @Test(alwaysRun = true)
     public void testReadByIdSupplier() {
+        supplierService = new SuppliersServices();
+        expectedSupplier = new Suppliers(
+                "Джейк",
+                1,
+                "Jk1000@gmail.com",
+                "8(777)2340056",
+                "г. Лос-Анджелес, ул. Смитта, д. 17, кв. 5");
+        supplierService.createSupplier(expectedSupplier);
+
         Suppliers realSupplier = supplierService.readSupplierById(expectedSupplier.getId_supplier());
         assertEquals(expectedSupplier.getId_supplier(), realSupplier.getId_supplier());
-    }
 
-    @AfterTest
-    public void afterTest() {
         supplierService.deleteSupplier(expectedSupplier);
-
     }
 }

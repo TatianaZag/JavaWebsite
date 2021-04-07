@@ -2,6 +2,7 @@ package Classes;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "provision")
@@ -75,4 +76,17 @@ public class Provision {
     private int count_prod;
     private Date date_prov;
     private String status;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Provision provision = (Provision) o;
+        return id_provision == provision.id_provision && id_product == provision.id_product && id_customer == provision.id_customer && count_prod == provision.count_prod && date_prov.equals(provision.date_prov) && status.equals(provision.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_provision, id_product, id_customer, count_prod, date_prov, status);
+    }
 }

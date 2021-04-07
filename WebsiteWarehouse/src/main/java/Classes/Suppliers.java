@@ -1,12 +1,11 @@
 package Classes;
 
-import javax.persistence.*;;
+import javax.persistence.*;;import java.util.Objects;
 
 @Entity
 @Table(name = "suppliers")
 public class Suppliers {
-    public Suppliers(int id_supplier, String name_supplier, int id_type, String email, String number_phone, String address) {
-        this.id_supplier = id_supplier;
+    public Suppliers(String name_supplier, int id_type, String email, String number_phone, String address) {
         this.name_supplier = name_supplier;
         this.id_type = id_type;
         this.email = email;
@@ -74,4 +73,17 @@ public class Suppliers {
     private String email;
     private String number_phone;
     private String address;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Suppliers suppliers = (Suppliers) o;
+        return id_supplier == suppliers.id_supplier && id_type == suppliers.id_type && name_supplier.equals(suppliers.name_supplier) && email.equals(suppliers.email) && number_phone.equals(suppliers.number_phone) && address.equals(suppliers.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_supplier, name_supplier, id_type, email, number_phone, address);
+    }
 }

@@ -50,8 +50,9 @@ public class ProvisionDAOImpl implements ProvisionDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Provision> query = session.createQuery("FROM Provision WHERE id_product = :param", Provision.class)
                 .setParameter("param", id);
+        List<Provision> tmp = query.getResultList();
         session.close();
-        return query.getResultList();
+        return tmp;
     }
 
     @Override
@@ -59,7 +60,8 @@ public class ProvisionDAOImpl implements ProvisionDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Provision> query = session.createQuery("FROM Provision WHERE id_product = :param", Provision.class)
                 .setParameter("param", id);
+        List<Provision> tmp = query.getResultList();
         session.close();
-        return query.getResultList();
+        return tmp;
     }
 }

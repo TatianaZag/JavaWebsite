@@ -51,8 +51,9 @@ public class ProductsDAOImpl implements ProductsDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Products> query = session.createQuery("FROM Products WHERE storage_location = :param", Products.class)
                 .setParameter("param", num_storage);
+        List<Products> tmp = query.getResultList();
         session.close();
-        return query.getResultList();
+        return tmp;
     }
 
     @Override
@@ -60,8 +61,9 @@ public class ProductsDAOImpl implements ProductsDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Products> query = session.createQuery("FROM Products WHERE type_prod = :param", Products.class)
                 .setParameter("param", type);
+        List<Products> tmp = query.getResultList();
         session.close();
-        return query.getResultList();
+        return tmp;
     }
 
     @Override
@@ -69,7 +71,8 @@ public class ProductsDAOImpl implements ProductsDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Products> query = session.createQuery("FROM Products WHERE date_prod = :param", Products.class)
                 .setParameter("param", date);
+        List<Products> tmp = query.getResultList();
         session.close();
-        return query.getResultList();
+        return tmp;
     }
 }

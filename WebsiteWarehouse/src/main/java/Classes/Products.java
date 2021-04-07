@@ -3,6 +3,7 @@ package Classes;
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "products")
@@ -11,8 +12,7 @@ public class Products {
     public Products() {
     }
 
-    public Products(int id_product, String name_product, String type_prod, int count_prod, String unit_measure, Date date_prod, String storage_location, int id_supplier) {
-        this.id_product = id_product;
+    public Products(String name_product, String type_prod, int count_prod, String unit_measure, Date date_prod, String storage_location, Suppliers id_supplier) {
         this.name_product = name_product;
         this.type_prod = type_prod;
         this.count_prod = count_prod;
@@ -80,11 +80,13 @@ public class Products {
     
     public void setStorage_location(String storage_location) { this.storage_location = storage_location; }
 
-    public int getId_supplier() {
+    @ManyToOne(targetEntity=Suppliers.class)
+    @JoinColumn(name = "id_supplier")
+    public Suppliers getId_supplier() {
         return id_supplier;
     }
 
-    public void setId_supplier(int id_supplier) {
+    public void setId_supplier(Suppliers id_supplier) {
         this.id_supplier = id_supplier;
     }
 
@@ -95,5 +97,21 @@ public class Products {
     private String unit_measure;
     private Date date_prod;
     private String storage_location;
-    private int id_supplier;
+    private Suppliers id_supplier;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Products products = (Products) o;
+        return id_product == products.id_product && count_prod == products.count_prod && id_supplier.equals(id_supplier)
+                && name_product.equals(products.name_product) && type_prod.equals(products.type_prod)
+                && unit_measure.equals(products.unit_measure) && date_prod.equals(products.date_prod)
+                && storage_location.equals(products.storage_location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_product, name_product, type_prod, count_prod, unit_measure, date_prod, storage_location, id_supplier);
+    }
 }

@@ -50,16 +50,18 @@ public class DeliveriesDAOImpl implements DeliveriesDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Deliveries> query = session.createQuery("FROM Deliveries WHERE id_product = :param", Deliveries.class)
                 .setParameter("param", id);
+        List<Deliveries> tmp = query.getResultList();
         session.close();
-        return query.getResultList();
+        return tmp;
     }
 
     @Override
     public List<Deliveries> readByIdSupplier(int id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Deliveries> query = session.createQuery("FROM Deliveries WHERE id_supplier = :param", Deliveries.class)
+        Query<Deliveries> query = session.createQuery("FROM Deliveries d WHERE d.supplier = :param", Deliveries.class)
                 .setParameter("param", id);
+        List<Deliveries> tmp = query.getResultList();
         session.close();
-        return query.getResultList();
+        return tmp;
     }
 }
