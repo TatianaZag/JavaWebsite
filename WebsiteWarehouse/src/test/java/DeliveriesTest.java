@@ -1,5 +1,3 @@
-package DAOTestLogic;
-
 import Classes.Deliveries;
 import Classes.Suppliers;
 import Classes.Products;
@@ -9,6 +7,7 @@ import Services.SuppliersServices;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -124,92 +123,69 @@ public class DeliveriesTest {
     @Test(alwaysRun = true)
     public void testReadByIdSupplier() {
         SuppliersServices supplierService = new SuppliersServices();
-        Suppliers tmpSupplier = supplierService.readSupplierById(3);
+        Suppliers tmpSupplier = supplierService.readSupplierById(2);
 
         ProductsServices productsServices = new ProductsServices();
-        Products tmpProduct = productsServices.readProductById(1);
-
-        deliveryService = new DeliveriesServices();
-        expectedDelivery = new Deliveries(
-                tmpProduct,
-                tmpSupplier,
-                20,
-                java.sql.Date.valueOf("2020-12-31"),
-                50
-        );
-        deliveryService.createDelivery(expectedDelivery);
-
-        SuppliersServices supplierService1 = new SuppliersServices();
-        Suppliers tmpSupplier1 = supplierService1.readSupplierById(2);
-        SuppliersServices supplierService2 = new SuppliersServices();
-        Suppliers tmpSupplier2 = supplierService2.readSupplierById(5);
-        SuppliersServices supplierService3 = new SuppliersServices();
-        Suppliers tmpSupplier3 = supplierService3.readSupplierById(4);
-
-        ProductsServices productService1 = new ProductsServices();
-        Products tmpProduct1 = productService1.readProductById(2);
-        ProductsServices productService2 = new ProductsServices();
-        Products tmpProduct2 = productService2.readProductById(5);
-        ProductsServices productService3 = new ProductsServices();
-        Products tmpProduct3 = productService3.readProductById(1);
+        Products tmpProduct1 = productsServices.readProductById(2);
+        Products tmpProduct2 = productsServices.readProductById(5);
+        Products tmpProduct3 = productsServices.readProductById(1);
 
         DeliveriesServices deliveriesServices = new DeliveriesServices();
-        Set<Deliveries> expectedDeliveries = Set.of(
-                expectedDelivery,
-                new Deliveries(tmpProduct1,tmpSupplier2,3,java.sql.Date.valueOf("2021-01-01"),35),
-                new Deliveries(tmpProduct3,tmpSupplier1,13,java.sql.Date.valueOf("2021-01-03"),90),
-                new Deliveries(tmpProduct2,tmpSupplier3,6,java.sql.Date.valueOf("2021-04-01"),21)
-        );
-        List<Deliveries> realDelivery = deliveriesServices.readDeliveryByIdSupplier(2);
-        assertEquals(realDelivery.size() - 3, expectedDeliveries.size());
-        expectedDeliveries.clear();
+        ArrayList<Deliveries> expectedDeliveries = new ArrayList<Deliveries>();
+        expectedDeliveries.add(new Deliveries(tmpProduct1,tmpSupplier,80,java.sql.Date.valueOf("2021-01-10"),60));
+        expectedDeliveries.add(new Deliveries(tmpProduct1,tmpSupplier,3,java.sql.Date.valueOf("2021-01-01"),35));
+        expectedDeliveries.add(new Deliveries(tmpProduct3,tmpSupplier,13,java.sql.Date.valueOf("2021-01-03"),90));
+        expectedDeliveries.add(new Deliveries(tmpProduct2,tmpSupplier,6,java.sql.Date.valueOf("2021-04-01"),21));
+        deliveriesServices.createDelivery(expectedDeliveries.get(0));
+        deliveriesServices.createDelivery(expectedDeliveries.get(1));
+        deliveriesServices.createDelivery(expectedDeliveries.get(2));
+        deliveriesServices.createDelivery(expectedDeliveries.get(3));
 
-        deliveryService.deleteDelivery(expectedDelivery);
+        List<Deliveries> realDelivery = deliveriesServices.readDeliveryByIdSupplier(2);
+        assertEquals(realDelivery, expectedDeliveries);
+        assertTrue(expectedDeliveries.contains(realDelivery.get(0)));
+        assertTrue(expectedDeliveries.contains(realDelivery.get(1)));
+        assertTrue(expectedDeliveries.contains(realDelivery.get(2)));
+        assertTrue(expectedDeliveries.contains(realDelivery.get(3)));
+
+        deliveriesServices.deleteDelivery(expectedDeliveries.get(0));
+        deliveriesServices.deleteDelivery(expectedDeliveries.get(1));
+        deliveriesServices.deleteDelivery(expectedDeliveries.get(2));
+        deliveriesServices.deleteDelivery(expectedDeliveries.get(3));
     }
 
     @Test(alwaysRun = true)
     public void testReadByIdProduct1() {
         SuppliersServices supplierService = new SuppliersServices();
-        Suppliers tmpSupplier = supplierService.readSupplierById(3);
 
         ProductsServices productsServices = new ProductsServices();
-        Products tmpProduct = productsServices.readProductById(1);
+        Products tmpProduct = productsServices.readProductById(2);
 
-        deliveryService = new DeliveriesServices();
-        expectedDelivery = new Deliveries(
-                tmpProduct,
-                tmpSupplier,
-                20,
-                java.sql.Date.valueOf("2020-12-31"),
-                50
-        );
-        deliveryService.createDelivery(expectedDelivery);
-
-        SuppliersServices supplierService1 = new SuppliersServices();
-        Suppliers tmpSupplier1 = supplierService1.readSupplierById(2);
-        SuppliersServices supplierService2 = new SuppliersServices();
-        Suppliers tmpSupplier2 = supplierService2.readSupplierById(5);
-        SuppliersServices supplierService3 = new SuppliersServices();
-        Suppliers tmpSupplier3 = supplierService3.readSupplierById(4);
-
-        ProductsServices productService1 = new ProductsServices();
-        Products tmpProduct1 = productService1.readProductById(2);
-        ProductsServices productService2 = new ProductsServices();
-        Products tmpProduct2 = productService2.readProductById(5);
-        ProductsServices productService3 = new ProductsServices();
-        Products tmpProduct3 = productService3.readProductById(1);
+        Suppliers tmpSupplier1 = supplierService.readSupplierById(2);
+        Suppliers tmpSupplier2 = supplierService.readSupplierById(5);
+        Suppliers tmpSupplier3 = supplierService.readSupplierById(4);
 
         DeliveriesServices deliveriesServices = new DeliveriesServices();
-        Set<Deliveries> expectedDeliveries = Set.of(
-                expectedDelivery,
-                new Deliveries(tmpProduct1,tmpSupplier2,3,java.sql.Date.valueOf("2021-01-01"),35),
-                new Deliveries(tmpProduct3,tmpSupplier1,13,java.sql.Date.valueOf("2021-01-03"),90),
-                new Deliveries(tmpProduct2,tmpSupplier3,6,java.sql.Date.valueOf("2021-04-01"),21)
-        );
-        List<Deliveries> realDelivery = deliveriesServices.readDeliveryByIdProduct(1);
-        assertEquals(realDelivery.size() - 2, expectedDeliveries.size());
-        expectedDeliveries.clear();
+        ArrayList<Deliveries> expectedDeliveries = new ArrayList<Deliveries>();
+        expectedDeliveries.add(new Deliveries(tmpProduct,tmpSupplier1,80,java.sql.Date.valueOf("2021-01-10"),60));
+        expectedDeliveries.add(new Deliveries(tmpProduct,tmpSupplier1,3,java.sql.Date.valueOf("2021-01-01"),35));
+        expectedDeliveries.add(new Deliveries(tmpProduct,tmpSupplier2,13,java.sql.Date.valueOf("2021-01-03"),90));
+        expectedDeliveries.add(new Deliveries(tmpProduct,tmpSupplier3,6,java.sql.Date.valueOf("2021-04-01"),21));
+        deliveriesServices.createDelivery(expectedDeliveries.get(0));
+        deliveriesServices.createDelivery(expectedDeliveries.get(1));
+        deliveriesServices.createDelivery(expectedDeliveries.get(2));
+        deliveriesServices.createDelivery(expectedDeliveries.get(3));
 
-        deliveryService.deleteDelivery(expectedDelivery);
+        List<Deliveries> realDelivery = deliveriesServices.readDeliveryByIdProduct(2);
+        assertEquals(realDelivery, expectedDeliveries);
+        assertTrue(expectedDeliveries.contains(realDelivery.get(0)));
+        assertTrue(expectedDeliveries.contains(realDelivery.get(1)));
+        assertTrue(expectedDeliveries.contains(realDelivery.get(2)));
+        assertTrue(expectedDeliveries.contains(realDelivery.get(3)));
+
+        deliveriesServices.deleteDelivery(expectedDeliveries.get(0));
+        deliveriesServices.deleteDelivery(expectedDeliveries.get(1));
+        deliveriesServices.deleteDelivery(expectedDeliveries.get(2));
+        deliveriesServices.deleteDelivery(expectedDeliveries.get(3));
     }
 }

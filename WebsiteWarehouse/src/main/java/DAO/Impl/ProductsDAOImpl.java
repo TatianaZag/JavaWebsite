@@ -49,7 +49,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     @Override
     public List<Products> readByStorageLocation(String num_storage) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Products> query = session.createQuery("FROM Products WHERE storage_location = :param", Products.class)
+        Query<Products> query = session.createQuery("FROM Products d WHERE d.storage_location = :param", Products.class)
                 .setParameter("param", num_storage);
         List<Products> tmp = query.getResultList();
         session.close();

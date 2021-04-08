@@ -10,8 +10,7 @@ public class Provision {
     public Provision() {
     }
 
-    public Provision(int id_provision, int id_product, int id_customer, int count_prod, Date date_prov, String status) {
-        this.id_provision = id_provision;
+    public Provision(Products id_product, Customers id_customer, int count_prod, Date date_prov, String status) {
         this.id_product = id_product;
         this.id_customer = id_customer;
         this.count_prod = count_prod;
@@ -30,19 +29,23 @@ public class Provision {
         this.id_provision = id_provision;
     }
 
-    public int getId_product() {
+    @ManyToOne(targetEntity=Products.class)
+    @JoinColumn(name = "id_product")
+    public Products getId_product() {
         return id_product;
     }
 
-    public void setId_product(int id_product) {
+    public void setId_product(Products id_product) {
         this.id_product = id_product;
     }
 
-    public int getId_customer() {
+    @ManyToOne(targetEntity=Customers.class)
+    @JoinColumn(name = "id_customer")
+    public Customers getId_customer() {
         return id_customer;
     }
 
-    public void setId_customer(int id_customer) {
+    public void setId_customer(Customers id_customer) {
         this.id_customer = id_customer;
     }
 
@@ -71,8 +74,8 @@ public class Provision {
     }
 
     private int id_provision;
-    private int id_product;
-    private int id_customer;
+    private Products id_product;
+    private Customers id_customer;
     private int count_prod;
     private Date date_prov;
     private String status;
@@ -82,7 +85,7 @@ public class Provision {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Provision provision = (Provision) o;
-        return id_provision == provision.id_provision && id_product == provision.id_product && id_customer == provision.id_customer && count_prod == provision.count_prod && date_prov.equals(provision.date_prov) && status.equals(provision.status);
+        return id_provision == provision.id_provision && id_product.equals(provision.id_product) && id_customer.equals(provision.id_customer) && count_prod == provision.count_prod && date_prov.equals(provision.date_prov) && status.equals(provision.status);
     }
 
     @Override

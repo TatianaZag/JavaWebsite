@@ -43,11 +43,11 @@ public class Deliveries {
 
     @ManyToOne(targetEntity=Suppliers.class)
     @JoinColumn(name = "id_supplier")
-    public Suppliers getSupplier() {
+    public Suppliers getId_supplier() {
         return id_supplier;
     }
 
-    public void setSupplier(Suppliers id_supplier) {
+    public void setId_supplier(Suppliers id_supplier) {
         this.id_supplier = id_supplier;
     }
 

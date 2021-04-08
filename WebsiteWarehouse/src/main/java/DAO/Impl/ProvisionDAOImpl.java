@@ -48,7 +48,7 @@ public class ProvisionDAOImpl implements ProvisionDAO {
     @Override
     public List<Provision> readByIdProduct(int id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Provision> query = session.createQuery("FROM Provision WHERE id_product = :param", Provision.class)
+        Query<Provision> query = session.createQuery("SELECT d FROM Provision d JOIN d.id_product s WHERE s.id_product = :param", Provision.class)
                 .setParameter("param", id);
         List<Provision> tmp = query.getResultList();
         session.close();
@@ -58,7 +58,7 @@ public class ProvisionDAOImpl implements ProvisionDAO {
     @Override
     public List<Provision> readByIdCustomer(int id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Provision> query = session.createQuery("FROM Provision WHERE id_product = :param", Provision.class)
+        Query<Provision> query = session.createQuery("SELECT d FROM Provision d JOIN d.id_customer s WHERE s.id_customer = :param", Provision.class)
                 .setParameter("param", id);
         List<Provision> tmp = query.getResultList();
         session.close();

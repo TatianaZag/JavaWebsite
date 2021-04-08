@@ -22,9 +22,6 @@ public class Products {
         this.id_supplier = id_supplier;
     }
 
-    public Products(int id_product, String jack_daniels, String алкоголь, int count_prod, String шт, LocalDate of, String f12, int id_supplier) {
-    }
-
     @Id
     @Column(name = "id_product")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

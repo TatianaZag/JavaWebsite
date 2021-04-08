@@ -1,5 +1,3 @@
-package DAOTestLogic;
-
 import Classes.Customers;
 import Services.CustomersServices;
 import org.testng.annotations.*;

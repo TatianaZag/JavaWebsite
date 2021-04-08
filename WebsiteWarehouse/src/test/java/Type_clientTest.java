@@ -1,5 +1,3 @@
-package DAOTestLogic;
-
 import Classes.Type_client;
 import Services.Type_clientServices;
 import Utils.HibernateSessionFactoryUtil;

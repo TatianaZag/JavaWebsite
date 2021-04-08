@@ -1,6 +1,6 @@
-package DAOTestLogic;
-
+import Classes.Deliveries;
 import Classes.Suppliers;
+import Services.DeliveriesServices;
 import Services.ProductsServices;
 import Services.SuppliersServices;
 import org.testng.*;
@@ -90,26 +90,23 @@ public class ProductsTest {
         Suppliers tmpSupplier = supplierService.readSupplierById(2);
 
         productService = new ProductsServices();
-        expectedProduct = new Products("Jack Daniels","алкоголь",25,"шт",java.sql.Date.valueOf("2020-12-30"),"F12",tmpSupplier);
-        productService.createProduct(expectedProduct);
+        ArrayList<Products> expectedProducts = new ArrayList<Products>();
+        expectedProducts.add(new Products("Dual Cook Flex","бытовая техника",10,"шт",java.sql.Date.valueOf("2021-01-10"),"A01",tmpSupplier));
+        expectedProducts.add(new Products("Huion Sample","бытовая техника",15,"шт",java.sql.Date.valueOf("2021-02-01"),"A01",tmpSupplier));
+        expectedProducts.add(new Products("Миф","бытовая химия",30,"шт",java.sql.Date.valueOf("2020-11-29"),"A01",tmpSupplier));
+        productService.createProduct(expectedProducts.get(0));
+        productService.createProduct(expectedProducts.get(1));
+        productService.createProduct(expectedProducts.get(2));
 
-        SuppliersServices supplierService1 = new SuppliersServices();
-        Suppliers tmpSupplier1 = supplierService1.readSupplierById(2);
-        SuppliersServices supplierService2 = new SuppliersServices();
-        Suppliers tmpSupplier2 = supplierService2.readSupplierById(5);
+        List<Products> realProducts = productService.readProductByStorage_location("A01");
+        Assert.assertEquals(realProducts, expectedProducts);
+        assertTrue(expectedProducts.contains(realProducts.get(0)));
+        assertTrue(expectedProducts.contains(realProducts.get(1)));
+        assertTrue(expectedProducts.contains(realProducts.get(2)));
 
-        ProductsServices productsServices = new ProductsServices();
-        Set<Products> expectedProducts = Set.of(
-                expectedProduct,
-                new Products("Dual Cook Flex","бытовая техника",10,"шт",java.sql.Date.valueOf("2021-01-10"),"A01",tmpSupplier1),
-                new Products("Huion Sample","бытовая техника",15,"шт",java.sql.Date.valueOf("2021-02-01"),"A01",tmpSupplier1),
-                new Products("Миф","бытовая химия",30,"шт",java.sql.Date.valueOf("2020-11-29"),"B01",tmpSupplier2)
-        );
-        List<Products> realProducts = productsServices.readProductByStorage_location("A01");
-        assertEquals(realProducts.size() - 2, expectedProducts.size());
-        expectedProducts.clear();
-
-        productService.deleteProduct(expectedProduct);
+        productService.deleteProduct(expectedProducts.get(0));
+        productService.deleteProduct(expectedProducts.get(1));
+        productService.deleteProduct(expectedProducts.get(2));
     }
 
     @Test(alwaysRun = true)
@@ -134,8 +131,7 @@ public class ProductsTest {
                 new Products("Миф","бытовая химия",30,"шт",java.sql.Date.valueOf("2020-11-29"),"B01",tmpSupplier2)
         );
         List<Products> realProducts = productsServices.readProductByType("алкоголь");
-        assertEquals(realProducts.size() - 3, expectedProducts.size());
-        expectedProducts.clear();
+        assertEquals(realProducts.size(), expectedProducts.size() - 3);
 
         productService.deleteProduct(expectedProduct);
     }
@@ -146,25 +142,22 @@ public class ProductsTest {
         Suppliers tmpSupplier = supplierService.readSupplierById(2);
 
         productService = new ProductsServices();
-        expectedProduct = new Products("Jack Daniels","алкоголь",25,"шт",java.sql.Date.valueOf("2020-12-30"),"F12",tmpSupplier);
-        productService.createProduct(expectedProduct);
+        ArrayList<Products> expectedProducts = new ArrayList<Products>();
+        expectedProducts.add(new Products("Dual Cook Flex","бытовая техника",10,"шт",java.sql.Date.valueOf("2020-12-30"),"A01",tmpSupplier));
+        expectedProducts.add(new Products("Huion Sample","бытовая техника",15,"шт",java.sql.Date.valueOf("2020-12-30"),"B01",tmpSupplier));
+        expectedProducts.add(new Products("Миф","бытовая химия",30,"шт",java.sql.Date.valueOf("2020-12-30"),"F11",tmpSupplier));
+        productService.createProduct(expectedProducts.get(0));
+        productService.createProduct(expectedProducts.get(1));
+        productService.createProduct(expectedProducts.get(2));
 
-        SuppliersServices supplierService1 = new SuppliersServices();
-        Suppliers tmpSupplier1 = supplierService1.readSupplierById(2);
-        SuppliersServices supplierService2 = new SuppliersServices();
-        Suppliers tmpSupplier2 = supplierService2.readSupplierById(5);
+        List<Products> realProducts = productService.readProductByDate(java.sql.Date.valueOf("2020-12-30"));
+        Assert.assertEquals(realProducts, expectedProducts);
+        assertTrue(expectedProducts.contains(realProducts.get(0)));
+        assertTrue(expectedProducts.contains(realProducts.get(1)));
+        assertTrue(expectedProducts.contains(realProducts.get(2)));
 
-        ProductsServices productsServices = new ProductsServices();
-        Set<Products> expectedProducts = Set.of(
-                expectedProduct,
-                new Products("Dual Cook Flex","бытовая техника",10,"шт",java.sql.Date.valueOf("2021-01-10"),"A01",tmpSupplier1),
-                new Products("Huion Sample","бытовая техника",15,"шт",java.sql.Date.valueOf("2021-02-01"),"A01",tmpSupplier1),
-                new Products("Миф","бытовая химия",30,"шт",java.sql.Date.valueOf("2020-11-29"),"B01",tmpSupplier2)
-        );
-        List<Products> realProducts = productsServices.readProductByDate(java.sql.Date.valueOf("2020-11-29"));
-        assertEquals(realProducts.size(), expectedProducts.size() - 3);
-        expectedProducts.clear();
-
-        productService.deleteProduct(expectedProduct);
+        productService.deleteProduct(expectedProducts.get(0));
+        productService.deleteProduct(expectedProducts.get(1));
+        productService.deleteProduct(expectedProducts.get(2));
     }
 }

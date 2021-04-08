@@ -36,17 +36,4 @@ public class Type_client {
 
     private int id_type;
     private String name_type;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Type_client that = (Type_client) o;
-        return id_type == that.id_type && name_type.equals(that.name_type);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id_type, name_type);
-    }
 }
