@@ -41,4 +41,8 @@ public class ProductsServices {
     public List<Products> readProductByDate(Date date) {
         return productDAO.readByDate(date);
     }
+
+    public List<Products> readProductAll() {
+        return productDAO.readAllProduct();
+    }
 }

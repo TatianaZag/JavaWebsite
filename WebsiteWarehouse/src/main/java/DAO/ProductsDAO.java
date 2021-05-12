@@ -12,4 +12,5 @@ public interface ProductsDAO {
     List<Products> readByStorageLocation(String num_storage);
     List<Products> readByTypeProduct(String type);
     List<Products> readByDate(Date date);
+    List<Products> readAllProduct();
 }

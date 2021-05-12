@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары</title>
+</head>
+<body>
+  <div>
+    <a href="/" class="btn_main" role="button">Главная страница</a>
+    <a href="/products" class="btn_main" role="button">Товары</a>
+    <a href="/deliveries" class="btn_main" role="button">Поставки</a>
+    <a href="/provision" class="btn_main" role="button">Выдачи</a>
+  </div>
+
+  <div>
+    <table class="tbl">
+      <tr>
+        <th>Наименование</th>
+        <th>Вид</th>
+        <th>Кол-во</th>
+        <th>Время хранения</th>
+        <th>Место хранения</th>
+        <th>Поставщик</th>
+      </tr>
+      <tr th:if="${products.empty}">
+        <td colspan="16">Нет товаров</td>
+      </tr>
+      <tr th:each="prod : ${products}">
+        <td> <a th:href="'/products?product_id=' + ${prod.getId_product()}"></a></td>
+        <td><span th:text="${prod.getName_product()}"></span></td>
+        <td><span th:text="${prod.getType_prod()}"></span></td>
+        <td><span th:text="${prod.getCount_prod()} + ' ' + ${prod.getUnit_measure()}"></span></td>
+        <td><span th:text="${prod.getDate_prod()}"></span></td>
+        <td><span th:text="${prod.getStorage_location()}"></span></td>
+        <td><span th:text="${prod.getId_supplier().id_supplier}"></span></td>
+      </tr>
+    </table>
+    <div>
+      <a href="/add-new-product" role="button">Добавить</a>
+    </div>
+  </div>
+
+</body>
+</html>

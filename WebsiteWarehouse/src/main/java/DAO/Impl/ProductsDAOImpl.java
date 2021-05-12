@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.sql.Date;
 import java.util.List;
 
@@ -74,5 +75,15 @@ public class ProductsDAOImpl implements ProductsDAO {
         List<Products> tmp = query.getResultList();
         session.close();
         return tmp;
+    }
+
+    @Override
+    public List<Products> readAllProduct() {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        CriteriaQuery<Products> criteria = session.getCriteriaBuilder().createQuery(Products.class);
+        criteria.from(Products.class);
+        List<Products> data = session.createQuery(criteria).getResultList();
+        session.close();
+        return data;
     }
 }

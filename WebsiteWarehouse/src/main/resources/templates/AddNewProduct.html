@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новый товар</title>
+</head>
+<body>
+    <form action="/added" method="post">
+        <div class="field-form">
+            <label class="all-text">Наименование товара</label>
+            <br>
+            <input type="text" class="form-control" id="validationDefaultNameProduct" name="name_product">
+        </div>
+        <div class="field-form">
+            <br>
+            <label class="all-text">Вид</label>
+            <br>
+            <input type="text" class="form-control" id="validationDefaultType" name="type_prod">
+        </div>
+        <div class="field-form">
+            <br>
+            <label class="all-text">Количество товара</label>
+            <br>
+            <input type="text" class="form-control" id="validationDefaultCountProd" name="count_prod">
+        </div>
+        <div class="field-form">
+            <br>
+            <label class="all-text">Единицы измерения</label>
+            <br>
+            <input type="text" class="form-control" id="validationDefaultUnitMeasure" name="unit_measure">
+        </div>
+        <div class="field-form">
+            <br>
+            <label class="all-text">Время хранения товара</label>
+            <br>
+            <input type="date" class="form-control" id="validationDefaultDateProd" name="date_prod">
+        </div>
+        <div class="field-form">
+            <br>
+            <label class="all-text">Место хранения товара</label>
+            <br>
+            <input type="text" class="form-control" id="validationDefaultStorageLocation" name="storage_location">
+        </div>
+        <div class="field-form">
+            <br>
+            <label class="all-text">Поставщик</label>
+            <br>
+            <input type="text" class="form-control" id="validationDefaultIdSupplier" name="supplier">
+        </div>
+        <br>
+        <div>
+            <button type="submit">Добавить</button>
+        </div>
+    </form>
+</body>
+</html>
