@@ -3,54 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить новый товар</title>
+    <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <form action="/added" method="post">
-        <div class="field-form">
-            <label class="all-text">Наименование товара</label>
-            <br>
-            <input type="text" class="form-control" id="validationDefaultNameProduct" name="name_product">
-        </div>
-        <div class="field-form">
-            <br>
-            <label class="all-text">Вид</label>
-            <br>
-            <input type="text" class="form-control" id="validationDefaultType" name="type_prod">
-        </div>
-        <div class="field-form">
-            <br>
-            <label class="all-text">Количество товара</label>
-            <br>
-            <input type="text" class="form-control" id="validationDefaultCountProd" name="count_prod">
-        </div>
-        <div class="field-form">
-            <br>
-            <label class="all-text">Единицы измерения</label>
-            <br>
-            <input type="text" class="form-control" id="validationDefaultUnitMeasure" name="unit_measure">
-        </div>
-        <div class="field-form">
-            <br>
-            <label class="all-text">Время хранения товара</label>
-            <br>
-            <input type="date" class="form-control" id="validationDefaultDateProd" name="date_prod">
-        </div>
-        <div class="field-form">
-            <br>
-            <label class="all-text">Место хранения товара</label>
-            <br>
-            <input type="text" class="form-control" id="validationDefaultStorageLocation" name="storage_location">
-        </div>
-        <div class="field-form">
-            <br>
-            <label class="all-text">Поставщик</label>
-            <br>
-            <input type="text" class="form-control" id="validationDefaultIdSupplier" name="supplier">
-        </div>
-        <br>
+    <header class="container">
         <div>
-            <button type="submit">Добавить</button>
+            <ul class="navigation">
+                <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
+                <li><a href="/products" class="btn_main" role="button">Товары</a></li>
+                <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+                <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+            </ul>
         </div>
-    </form>
+    </header>
+
+    <div class="container" id="for-cntr">
+        <div class="col">
+            <form action="/added" method="post">
+                <div class="field-form">
+                    <label class="all-text">Наименование товара</label>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefaultNameProduct" name="name_product">
+                </div>
+                <div class="field-form">
+                    <br>
+                    <label class="all-text">Вид</label>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefaultType" name="type_prod">
+                </div>
+                <div class="field-form">
+                    <br>
+                    <label class="all-text">Количество товара</label>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefaultCountProd" name="count_prod">
+                </div>
+                <div class="field-form">
+                    <br>
+                    <label class="all-text">Единицы измерения</label>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefaultUnitMeasure" name="unit_measure">
+                </div>
+                <div class="field-form">
+                    <br>
+                    <label class="all-text">Время хранения товара</label>
+                    <br>
+                    <input type="date" class="form-control" id="validationDefaultDateProd" name="date_prod">
+                </div>
+                <div class="field-form">
+                    <br>
+                    <label class="all-text">Место хранения товара</label>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefaultStorageLocation" name="storage_location">
+                </div>
+                <div class="field-form">
+                    <br>
+                    <label class="all-text">Поставщик</label>
+                    <br>
+                    <input type="text" class="form-control" id="validationDefaultIdSupplier" name="supplier">
+                </div>
+                <br>
+                <div>
+                    <button type="submit">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -10,4 +10,5 @@ public interface DeliveriesDAO {
     Deliveries readById(int id);
     List<Deliveries> readByIdProduct(int id);
     List<Deliveries> readByIdSupplier(int id);
+    List<Deliveries> readAllDeliveries();
 }

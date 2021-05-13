@@ -1,12 +1,14 @@
 package DAO.Impl;
 
 import Classes.Deliveries;
+import Classes.Products;
 import DAO.DeliveriesDAO;
 import Utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class DeliveriesDAOImpl implements DeliveriesDAO {
@@ -63,5 +65,15 @@ public class DeliveriesDAOImpl implements DeliveriesDAO {
         List<Deliveries> tmp = query.getResultList();
         session.close();
         return tmp;
+    }
+
+    @Override
+    public List<Deliveries> readAllDeliveries() {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        CriteriaQuery<Deliveries> criteria = session.getCriteriaBuilder().createQuery(Deliveries.class);
+        criteria.from(Deliveries.class);
+        List<Deliveries> data = session.createQuery(criteria).getResultList();
+        session.close();
+        return data;
     }
 }

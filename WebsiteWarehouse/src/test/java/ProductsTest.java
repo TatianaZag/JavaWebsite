@@ -29,7 +29,7 @@ public class ProductsTest {
         Products realProduct = productService.readProductById(expectedProduct.getId_product());
         assertEquals(expectedProduct, realProduct);
 
-        productService.deleteProduct(expectedProduct);
+        //productService.deleteProduct(expectedProduct);
     }
 
     @Test(alwaysRun = true)

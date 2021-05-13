@@ -1,0 +1,25 @@
+ul.navigation {
+    margin-left: 0px;
+    padding-left: 0px;
+    list-style: none;
+}
+
+.navigation li {
+    display: inline;
+}
+
+ul.navigation a {
+    display: inline-block;
+    width: 5em;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px #333;
+    text-decoration: none;
+    color: #333333;
+    text-align: center;
+}
+
+ul.navigation a:hover {
+    background-color: #333333;
+    color: #f4f4f4;
+}

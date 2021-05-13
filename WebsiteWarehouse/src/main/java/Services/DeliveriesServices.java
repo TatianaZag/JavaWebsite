@@ -1,6 +1,7 @@
 package Services;
 
 import Classes.Deliveries;
+import Classes.Products;
 import DAO.DeliveriesDAO;
 import DAO.Impl.DeliveriesDAOImpl;
 
@@ -30,5 +31,9 @@ public class DeliveriesServices {
 
     public List<Deliveries> readDeliveryByIdSupplier(int id) {
         return deliveriesDAO.readByIdSupplier(id);
+    }
+
+    public List<Deliveries> readDeliveriesAll() {
+        return deliveriesDAO.readAllDeliveries();
     }
 }

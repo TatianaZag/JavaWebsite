@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Изменить товар</title>
+  <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header class="container">
+  <div>
+    <ul class="navigation">
+      <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
+      <li><a href="/products" class="btn_main" role="button">Товары</a></li>
+      <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+      <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="container" id="for-cntr">
+  <div class="col">
+    <form action="/save-edit-product" method="post">
+      <div class="field-form">
+        <input type="hidden" name="id_product" th:value="${products.getId_product()}">
+        <label class="all-text">Наименование товара</label>
+        <br>
+        <input type="text" class="form-control" name="name_product" th:value="${products.getName_product()}">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Вид</label>
+        <br>
+        <input type="text" class="form-control" name="type_prod" th:value="${products.getType_prod()}">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Количество товара</label>
+        <br>
+        <input type="text" class="form-control" name="count_prod" th:value="${products.getCount_prod()}">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Единицы измерения</label>
+        <br>
+        <input type="text" class="form-control" name="unit_measure" th:value="${products.getUnit_measure()}">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Время хранения товара</label>
+        <br>
+        <input type="date" class="form-control" name="date_prod" th:value="${products.getDate_prod()}">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Место хранения товара</label>
+        <br>
+        <input type="text" class="form-control" name="storage_location" th:value="${products.getStorage_location()}">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Поставщик</label>
+        <br>
+        <input type="text" class="form-control" name="supplier" th:value="${products.getId_supplier().id_supplier}">
+      </div>
+      <br>
+      <div>
+        <button type="submit">Изменить</button>
+        <!--<button type="button" th:action="/delete-product">Удалить</button>-->
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

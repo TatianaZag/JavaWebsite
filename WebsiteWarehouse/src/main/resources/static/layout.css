@@ -1,0 +1,76 @@
+body {
+    background: linear-gradient(to right, rgba(44, 62, 80, 0.4), rgba(253, 116, 108, 0.4)), url("https://sun9-3.userapi.com/impg/ZkLmXWjW50L5hKg7UDam52Q9ZTvIgabtCGrfqw/_cph-0bOb7w.jpg?size=2560x1440&quality=96&sign=4687161fd5f8b02b9fd46d7128a9accf&type=album");
+    background-size: cover;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+header.container {
+    background: #333333;
+}
+
+div#for-cntr {
+    width: 400px;
+    background: #e1e1e1;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 570px;
+}
+
+div#mini-cntr {
+    width: 350px;
+    background: #e1e1e1;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 70px;
+    text-align: center;
+}
+
+div#mini-cntr-text {
+    border-radius: 25px;
+    width: 500px;
+    background: #e1e1e1;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 67px;
+    text-align: center;
+}
+
+div.col {
+    margin-top: 25px;
+    padding: 5px;
+    text-align: center;
+}
+
+div.col-1 {
+    width: 34%;
+    float: left;
+    background: #e1e1e1;
+}
+
+div.col-2 {
+    width: 66%;
+    float: right;
+    background: #e1e1e1;
+}
+
+.content-tbl, .content-btn {
+    margin: 5px;
+    padding: 5px;
+}

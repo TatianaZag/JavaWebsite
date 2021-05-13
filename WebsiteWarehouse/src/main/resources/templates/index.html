@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
+    <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
 </head>
 <body>
-    <div>
-        <a href="/products" class="btn_main" role="button">Товары</a>
-        <a href="/deliveries" class="btn_main" role="button">Поставки</a>
-        <a href="/provision" class="btn_main" role="button">Выдачи</a>
+    <div class="container" id="mini-cntr">
+        <ul class="navigation">
+            <li><a href="/products" class="btn_main" id="btn-1" role="button">Товары</a></li>
+            <li><a href="/deliveries" class="btn_main" id="btn-2" role="button">Поставки</a></li>
+            <li><a href="/provision" class="btn_main" id="btn-3" role="button">Выдачи</a></li>
+        </ul>
     </div>
 </body>
 </html>

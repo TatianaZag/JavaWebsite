@@ -3,57 +3,35 @@
 <head>
   <meta charset="utf-8">
   <title>Название документа</title>
+  <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wg.." rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    #shading {
-      background: rgba(102, 102, 102, 0.5);
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: none;
+    h3 {
+      font-family: 'Josefin Slab', sans-serif;
+      color: #333333;
     }
-    #window {
-      width: 300px;
-      height: 50px;
-      text-align: center;
-      padding: 15px;
-      border: 3px solid #0000cc;
-      border-radius: 10px;
-      color: #0000cc;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-      background: #fff;
-    }
-    #shading:target {display: block;}
-    .close {
-      display: inline-block;
-      border: 1px solid #0000cc;
-      color: #0000cc;
-      padding: 0 12px;
-      margin: 10px;
-      text-decoration: none;
-      background: #f2f2f2;
-      font-size: 14pt;
-      cursor:pointer;
-    }
-    .close:hover {background: #e6e6ff;}
   </style>
 </head>
 
 <body>
+  <header class="container">
+    <div>
+      <ul class="navigation">
+        <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
+        <li><a href="/products" class="btn_main" role="button">Товары</a></li>
+        <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+        <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+      </ul>
+    </div>
+  </header>
 
-<div id="shading">
-  <div id="window">
-    Сохранение прошло успешно!
-    <br>
-    <a href="#" class="close">Закрыть окно</a>
+  <div class="container">
+    <div id="mini-cntr-text">
+      <h3>Сохранение прошло успешно!</h3>
+    </div>
   </div>
-</div>
 
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавить новую поставку</title>
+  <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header class="container">
+  <div>
+    <ul class="navigation">
+      <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
+      <li><a href="/products" class="btn_main" role="button">Товары</a></li>
+      <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+      <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="container" id="for-cntr">
+  <div class="col">
+    <form action="/added-del" method="post">
+      <div class="field-form">
+        <br>
+        <label class="all-text">Код поставщика</label>
+        <br>
+        <input type="text" class="form-control" id="validationDefaultIdSupplier" name="supplier">
+      </div>
+      <div class="field-form">
+        <label class="all-text">Код товара</label>
+        <br>
+        <input type="text" class="form-control" id="validationDefaultNameProduct" name="product">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Количество товара</label>
+        <br>
+        <input type="text" class="form-control" id="validationDefaultCountProd" name="count_prod">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Дата поставки товара</label>
+        <br>
+        <input type="date" class="form-control" id="validationDefaultStorageLocation" name="date_deliver">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Срок хранения товара</label>
+        <br>
+        <input type="text" class="form-control" id="validationDefaultDateProd" name="storage_time">
+      </div>
+      <br>
+      <div>
+        <button type="submit">Добавить</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
