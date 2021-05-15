@@ -1,5 +1,6 @@
 package DAO.Impl;
 
+import Classes.Products;
 import Classes.Provision;
 import DAO.ProvisionDAO;
 import Utils.HibernateSessionFactoryUtil;
@@ -7,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class ProvisionDAOImpl implements ProvisionDAO {
@@ -63,5 +65,15 @@ public class ProvisionDAOImpl implements ProvisionDAO {
         List<Provision> tmp = query.getResultList();
         session.close();
         return tmp;
+    }
+
+    @Override
+    public List<Provision> readAllProvision() {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        CriteriaQuery<Provision> criteria = session.getCriteriaBuilder().createQuery(Provision.class);
+        criteria.from(Provision.class);
+        List<Provision> data = session.createQuery(criteria).getResultList();
+        session.close();
+        return data;
     }
 }

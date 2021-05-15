@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить информацию о поставщике</title>
+    <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header class="container">
+    <div>
+        <ul class="navigation">
+            <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
+            <li><a href="/products" class="btn_main" role="button">Товары</a></li>
+            <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+            <li><a href="/suppliers" class="btn_main" role="button">Поставщики</a></li>
+            <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+            <li><a href="/customers" class="btn_main" role="button">Клиенты</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container" id="for-cntr">
+    <div class="col">
+        <form action="/save-edit-supplier" method="post">
+            <div class="field-form">
+                <input type="hidden" name="id_supplier" th:value="${supplier.getId_supplier()}">
+                <label class="all-text">Наименование поставщика</label>
+                <br>
+                <input type="text" class="form-control" name="name_supplier" th:value="${supplier.getName_supplier()}">
+            </div>
+            <div class="field-form">
+                <br>
+                <label class="all-text">Тип</label>
+                <br>
+                <label class="not-all-text">1 - юр.лицо; 2 - физ.лицо</label>
+                <br>
+                <input type="text" class="form-control" name="id_type" th:value="${supplier.getId_type()}">
+            </div>
+            <div class="field-form">
+                <br>
+                <label class="all-text">Электронная почта</label>
+                <br>
+                <input type="text" class="form-control" name="email" th:value="${supplier.getEmail()}">
+            </div>
+            <div class="field-form">
+                <br>
+                <label class="all-text">Номер телефона</label>
+                <br>
+                <input type="text" class="form-control" name="number_phone" th:value="${supplier.getNumber_phone()}">
+            </div>
+            <div class="field-form">
+                <br>
+                <label class="all-text">Адрес</label>
+                <br>
+                <input type="text" class="form-control" name="address" th:value="${supplier.getAddress()}">
+            </div>
+            <br>
+            <div>
+                <button type="submit">Изменить</button>
+                <ul class="navigation">
+                    <li><a role="button" th:href="'/delete-supplier?id_supplier=' + ${supplier.getId_supplier()}">Удалить</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

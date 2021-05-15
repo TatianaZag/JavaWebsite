@@ -29,12 +29,12 @@ public class DeliveriesController {
     }
 
     @GetMapping("/add-new-delivery")
-    public String addProductPage() {
+    public String addDeliveryPage() {
         return "AddNewDelivery";
     }
 
     @PostMapping("/added-del")
-    public String newProduct(@RequestParam(name = "product") int iproduct,
+    public String newDelivery(@RequestParam(name = "product") int iproduct,
                              @RequestParam(name = "supplier") int isupplier,
                              @RequestParam(name = "count_prod") int count_prod,
                              @RequestParam(name = "date_deliver") Date date_deliver,
@@ -49,6 +49,46 @@ public class DeliveriesController {
                 storage_time);
         deliveriesServices.createDelivery(new_delivery);
 
-        return "SuccessSave";
+        return "redirect:/deliveries";
+    }
+
+    @GetMapping("/edit-delivery")
+    public String deliveryEdit(@RequestParam(name = "id_delivery", required = true) int id_delivery, Model model) {
+        Deliveries deliv = deliveriesServices.readDeliveryById(id_delivery);
+        model.addAttribute("deliveries", deliv);
+        return "EditDelivery";
+    }
+
+    @PostMapping("/save-edit-delivery")
+    public String editDelivery(@RequestParam(name = "id_product") int iproduct,
+                               @RequestParam(name = "id_supplier") int isupplier,
+                               @RequestParam(name = "count_prod") int count_prod,
+                               @RequestParam(name = "date_deliver") Date date_deliver,
+                               @RequestParam(name = "storage_time") int storage_time,
+                              @RequestParam(name = "id_delivery") int id_delivery,
+                              Model model) {
+        Deliveries old_delivery = deliveriesServices.readDeliveryById(id_delivery);
+
+        Products product = productsServices.readProductById(iproduct);
+        Suppliers supplier = suppliersServices.readSupplierById(isupplier);
+
+        old_delivery.setId_product(product);
+        old_delivery.setId_supplier(supplier);
+        old_delivery.setCount_prod(count_prod);
+        old_delivery.setDate_deliver(date_deliver);
+        old_delivery.setStorage_time(storage_time);
+
+        deliveriesServices.updateDelivery(old_delivery);
+
+        return "redirect:/deliveries";
+    }
+
+    @GetMapping("/delete-delivery")
+    public String deleteDelivery(@RequestParam(name = "id_delivery") int id_delivery,
+                                Model model) {
+        Deliveries useless_delivery = deliveriesServices.readDeliveryById(id_delivery);
+        deliveriesServices.deleteDelivery(useless_delivery);
+
+        return "redirect:/deliveries";
     }
 }

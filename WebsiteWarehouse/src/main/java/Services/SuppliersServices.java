@@ -4,6 +4,8 @@ import Classes.Suppliers;
 import DAO.Impl.SuppliersDAOImpl;
 import DAO.SuppliersDAO;
 
+import java.util.List;
+
 public class SuppliersServices {
     private SuppliersDAO supplierDAO = new SuppliersDAOImpl();
     public void createSupplier(Suppliers supplier) {
@@ -20,5 +22,9 @@ public class SuppliersServices {
 
     public Suppliers readSupplierById(int id) {
         return supplierDAO.readById(id);
+    }
+
+    public List<Suppliers> readSuppliersAll() {
+        return supplierDAO.readAllSuppliers();
     }
 }

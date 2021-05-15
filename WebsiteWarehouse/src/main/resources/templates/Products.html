@@ -15,7 +15,9 @@
         <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
         <li><a href="/products" class="btn_main" role="button">Товары</a></li>
         <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+        <li><a href="/suppliers" class="btn_main" role="button">Поставщики</a></li>
         <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+        <li><a href="/customers" class="btn_main" role="button">Клиенты</a></li>
       </ul>
     </div>
   </header>
@@ -36,7 +38,7 @@
           <th>Место хранения</th>
           <th>Поставщик</th>
         </tr>
-        <tr th:if="${products.empty}">
+        <tr th:if="${#lists.isEmpty(products)}">
           <td colspan="16">Нет товаров</td>
         </tr>
         <tr th:each="prod : ${products}">
@@ -53,6 +55,7 @@
       <div class="content-btn">
         <ul class="navigation">
           <li><a href="/add-new-product" role="button">Добавить</a></li>
+          <li><a href="/filter-product" role="button">Фильтровать</a></li>
         </ul>
       </div>
     </div>

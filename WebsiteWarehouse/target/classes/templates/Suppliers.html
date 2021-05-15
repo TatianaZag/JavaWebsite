@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Поставщики</title>
+  <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/tables.css" th:href="@{/tables.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header class="container">
+  <div>
+    <ul class="navigation">
+      <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
+      <li><a href="/products" class="btn_main" role="button">Товары</a></li>
+      <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+      <li><a href="/suppliers" class="btn_main" role="button">Поставщики</a></li>
+      <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+      <li><a href="/customers" class="btn_main" role="button">Клиенты</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="container">
+  <div class="col-1">
+
+  </div>
+
+  <div class="col-2">
+    <div class="content-tbl">
+      <table class="tbl">
+        <tr>
+          <th>Наименование поставщика</th>
+          <th>Тип</th>
+          <th>Электронная почта</th>
+          <th>Контактный телефон</th>
+          <th>Адрес</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(supplier)}">
+          <td colspan="16">Нет поставщиков</td>
+        </tr>
+        <tr th:each="supl : ${supplier}">
+          <td><a class="text-link" th:href="'/edit-supplier?id_supplier=' + ${supl.getId_supplier()}"><span th:text="${supl.getName_supplier()}"></span></a></td>
+          <td><span th:text="${supl.getId_type()}"></span></td>
+          <td><span th:text="${supl.getEmail()}"></span></td>
+          <td><span th:text="${supl.getNumber_phone()}"></span></td>
+          <td><span th:text="${supl.getAddress()}"></span></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div class="content-btn">
+      <ul class="navigation">
+        <li><a href="/add-new-supplier" role="button">Добавить</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

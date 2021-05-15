@@ -86,4 +86,44 @@ public class ProductsDAOImpl implements ProductsDAO {
         session.close();
         return data;
     }
+
+    @Override
+    public List<Products> findProductByIdSupplier(int id) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Products> query = session.createQuery("FROM Products d WHERE d.id_supplier = :param", Products.class)
+                .setParameter("param", id);
+        List<Products> tmp = query.getResultList();
+        session.close();
+        return tmp;
+    }
+
+    @Override
+    public List<Products> findProductByType(String type) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Products> query = session.createQuery("FROM Products d WHERE d.type_prod = :param", Products.class)
+                .setParameter("param", type);
+        List<Products> tmp = query.getResultList();
+        session.close();
+        return tmp;
+    }
+
+    @Override
+    public List<Products> findProductByDateAfter(Date date) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Products> query = session.createQuery("FROM Products d WHERE d.date_prod >= :param", Products.class)
+                .setParameter("param", date);
+        List<Products> tmp = query.getResultList();
+        session.close();
+        return tmp;
+    }
+
+    @Override
+    public List<Products> findProductByDateBefore(Date date) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Products> query = session.createQuery("FROM Products d WHERE d.date_prod <= :param", Products.class)
+                .setParameter("param", date);
+        List<Products> tmp = query.getResultList();
+        session.close();
+        return tmp;
+    }
 }

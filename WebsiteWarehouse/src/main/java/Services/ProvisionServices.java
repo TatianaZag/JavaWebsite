@@ -1,5 +1,6 @@
 package Services;
 
+import Classes.Products;
 import Classes.Provision;
 import DAO.Impl.ProvisionDAOImpl;
 import DAO.ProvisionDAO;
@@ -30,5 +31,9 @@ public class ProvisionServices {
 
     public List<Provision> readProvisionByIdCustomer(int id) {
         return provisionDAO.readByIdCustomer(id);
+    }
+
+    public List<Provision> readProvisionAll() {
+        return provisionDAO.readAllProvision();
     }
 }

@@ -6,6 +6,9 @@ import Utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.List;
+
 public class SuppliersDAOImpl implements SuppliersDAO {
     @Override
     public void create(Suppliers suppliers) {
@@ -40,5 +43,15 @@ public class SuppliersDAOImpl implements SuppliersDAO {
         Suppliers suppliers = session.get(Suppliers.class, id);
         session.close();
         return suppliers;
+    }
+
+    @Override
+    public List<Suppliers> readAllSuppliers() {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        CriteriaQuery<Suppliers> criteria = session.getCriteriaBuilder().createQuery(Suppliers.class);
+        criteria.from(Suppliers.class);
+        List<Suppliers> data = session.createQuery(criteria).getResultList();
+        session.close();
+        return data;
     }
 }

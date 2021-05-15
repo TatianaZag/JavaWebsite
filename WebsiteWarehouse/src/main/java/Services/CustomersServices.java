@@ -4,6 +4,8 @@ import Classes.Customers;
 import DAO.CustomersDAO;
 import DAO.Impl.CustomersDAOImpl;
 
+import java.util.List;
+
 public class CustomersServices {
     private CustomersDAO customerDAO = new CustomersDAOImpl();
     public CustomersServices() { }
@@ -22,5 +24,9 @@ public class CustomersServices {
 
     public Customers readCustomerById(int id) {
         return customerDAO.readById(id);
+    }
+
+    public List<Customers> readCustomersAll() {
+        return customerDAO.readAllCustomers();
     }
 }

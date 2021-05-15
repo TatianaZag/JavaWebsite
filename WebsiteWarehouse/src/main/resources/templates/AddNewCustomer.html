@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавить нового клиента</title>
+  <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wg.." rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .not-all-text {
+      font-family: 'Josefin Slab', sans-serif;
+      font-size: small;
+      color: dimgray;
+    }
+  </style>
+</head>
+<body>
+<header class="container">
+  <div>
+    <ul class="navigation">
+      <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
+      <li><a href="/products" class="btn_main" role="button">Товары</a></li>
+      <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+      <li><a href="/suppliers" class="btn_main" role="button">Поставщики</a></li>
+      <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+      <li><a href="/customers" class="btn_main" role="button">Клиенты</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="container" id="for-cntr">
+  <div class="col">
+    <form action="/added-cust" method="post">
+      <div class="field-form">
+        <br>
+        <label class="all-text">Наименование клиента</label>
+        <br>
+        <input type="text" class="form-control" id="validationDefaultNameCustomer" name="name_customer">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Тип</label>
+        <br>
+        <label class="not-all-text">1 - юр.лицо; 2 - физ.лицо</label>
+        <br>
+        <select name="id_type">
+          <option>1</option>
+          <option>2</option>
+        </select>
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Электронная почта</label>
+        <br>
+        <input type="text" class="form-control" id="validationDefaultEmail" name="email">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Номер телефона</label>
+        <br>
+        <input type="text" class="form-control" id="validationDefaultNumberPhone" name="number_phone">
+      </div>
+      <div class="field-form">
+        <br>
+        <label class="all-text">Адрес</label>
+        <br>
+        <input type="text" class="form-control" id="validationDefaultAddress" name="address">
+      </div>
+      <br>
+      <div>
+        <button type="submit">Добавить</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

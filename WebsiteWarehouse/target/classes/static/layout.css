@@ -22,11 +22,11 @@ div#for-cntr {
     bottom: 0;
     right: 0;
     left: 0;
-    height: 570px;
+    height: 620px;
 }
 
 div#mini-cntr {
-    width: 350px;
+    width: 800px;
     background: #e1e1e1;
     position: absolute;
     margin: auto;
@@ -59,13 +59,13 @@ div.col {
 }
 
 div.col-1 {
-    width: 34%;
+    width: 25%;
     float: left;
     background: #e1e1e1;
 }
 
 div.col-2 {
-    width: 66%;
+    width: 75%;
     float: right;
     background: #e1e1e1;
 }

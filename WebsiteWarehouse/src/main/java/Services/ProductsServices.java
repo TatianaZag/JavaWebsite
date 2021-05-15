@@ -45,4 +45,20 @@ public class ProductsServices {
     public List<Products> readProductAll() {
         return productDAO.readAllProduct();
     }
+
+    public List<Products> findProductByIS(int id) {
+        return productDAO.findProductByIdSupplier(id);
+    }
+
+    public List<Products> findProductByT(String type) {
+        return productDAO.findProductByType(type);
+    }
+
+    public List<Products> findProductByDB(Date date) {
+        return productDAO.findProductByDateBefore(date);
+    }
+
+    public List<Products> findProductByDA(Date date) {
+        return productDAO.findProductByDateAfter(date);
+    }
 }

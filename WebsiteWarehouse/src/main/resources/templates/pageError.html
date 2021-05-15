@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ошибка</title>
+  <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wg.." rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    h3 {
+      font-family: 'Josefin Slab', sans-serif;
+      color: #e1e1e1;
+    }
+  </style>
+</head>
+
+<body>
+<header class="container">
+  <div>
+    <ul class="navigation">
+      <li><a href="/" class="btn_main" role="button"><i class="fa fa-home"></i></a></li>
+      <li><a href="/products" class="btn_main" role="button">Товары</a></li>
+      <li><a href="/deliveries" class="btn_main" role="button">Поставки</a></li>
+      <li><a href="/suppliers" class="btn_main" role="button">Поставщики</a></li>
+      <li><a href="/provision" class="btn_main" role="button">Выдачи</a></li>
+      <li><a href="/customers" class="btn_main" role="button">Клиенты</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="container">
+  <br><br>
+  <h1>Ошибка!</h1>
+  <br>
+  <h3><span th:text="${error}"></span></h3>
+</div>
+
+</body>
+</html>

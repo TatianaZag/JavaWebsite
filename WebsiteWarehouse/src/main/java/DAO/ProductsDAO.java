@@ -13,4 +13,8 @@ public interface ProductsDAO {
     List<Products> readByTypeProduct(String type);
     List<Products> readByDate(Date date);
     List<Products> readAllProduct();
+    List<Products> findProductByIdSupplier(int id);
+    List<Products> findProductByType(String type);
+    List<Products> findProductByDateAfter(Date date);
+    List<Products> findProductByDateBefore(Date date);
 }

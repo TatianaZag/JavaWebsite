@@ -10,4 +10,5 @@ public interface ProvisionDAO {
     Provision readById(int id);
     List<Provision> readByIdProduct(int id);
     List<Provision> readByIdCustomer(int id);
+    List<Provision> readAllProvision();
 }
