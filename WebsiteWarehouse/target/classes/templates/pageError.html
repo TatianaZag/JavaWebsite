@@ -7,12 +7,6 @@
   <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wg.." rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    h3 {
-      font-family: 'Josefin Slab', sans-serif;
-      color: #e1e1e1;
-    }
-  </style>
 </head>
 
 <body>
@@ -30,10 +24,10 @@
 </header>
 
 <div class="container">
-  <br><br>
-  <h1>Ошибка!</h1>
-  <br>
-  <h3><span th:text="${error}"></span></h3>
+  <div id="mini-cntr-error">
+    <h1>Ошибка!</h1>
+    <h3><span th:text="${error}"></span></h3>
+  </div>
 </div>
 
 </body>

@@ -1,6 +1,7 @@
 package Services;
 
 import Classes.Products;
+import Classes.Suppliers;
 import DAO.Impl.ProductsDAOImpl;
 import DAO.ProductsDAO;
 
@@ -46,8 +47,8 @@ public class ProductsServices {
         return productDAO.readAllProduct();
     }
 
-    public List<Products> findProductByIS(int id) {
-        return productDAO.findProductByIdSupplier(id);
+    public List<Products> findProductByIS(Suppliers supplier) {
+        return productDAO.findProductByIdSupplier(supplier);
     }
 
     public List<Products> findProductByT(String type) {

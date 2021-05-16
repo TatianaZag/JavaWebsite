@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaQuery;
+import java.sql.Date;
 import java.util.List;
 
 public class DeliveriesDAOImpl implements DeliveriesDAO {
@@ -75,5 +76,25 @@ public class DeliveriesDAOImpl implements DeliveriesDAO {
         List<Deliveries> data = session.createQuery(criteria).getResultList();
         session.close();
         return data;
+    }
+
+    @Override
+    public List<Deliveries> findDeliveriesByDateAfter(Date date) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Deliveries> query = session.createQuery("FROM Deliveries d WHERE d.date_deliver >= :param", Deliveries.class)
+                .setParameter("param", date);
+        List<Deliveries> tmp = query.getResultList();
+        session.close();
+        return tmp;
+    }
+
+    @Override
+    public List<Deliveries> findDeliveriesByDateBefore(Date date) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Deliveries> query = session.createQuery("FROM Deliveries d WHERE d.date_deliver <= :param", Deliveries.class)
+                .setParameter("param", date);
+        List<Deliveries> tmp = query.getResultList();
+        session.close();
+        return tmp;
     }
 }

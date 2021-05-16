@@ -1,6 +1,8 @@
 package DAO;
 import Classes.Deliveries;
+import Classes.Products;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface DeliveriesDAO {
@@ -11,4 +13,6 @@ public interface DeliveriesDAO {
     List<Deliveries> readByIdProduct(int id);
     List<Deliveries> readByIdSupplier(int id);
     List<Deliveries> readAllDeliveries();
+    List<Deliveries> findDeliveriesByDateAfter(Date date);
+    List<Deliveries> findDeliveriesByDateBefore(Date date);
 }

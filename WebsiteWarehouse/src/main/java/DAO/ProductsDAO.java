@@ -1,5 +1,6 @@
 package DAO;
 import Classes.Products;
+import Classes.Suppliers;
 
 import java.sql.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ public interface ProductsDAO {
     List<Products> readByTypeProduct(String type);
     List<Products> readByDate(Date date);
     List<Products> readAllProduct();
-    List<Products> findProductByIdSupplier(int id);
+    List<Products> findProductByIdSupplier(Suppliers supplier);
     List<Products> findProductByType(String type);
     List<Products> findProductByDateAfter(Date date);
     List<Products> findProductByDateBefore(Date date);

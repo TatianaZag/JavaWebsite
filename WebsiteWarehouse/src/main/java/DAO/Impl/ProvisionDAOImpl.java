@@ -1,5 +1,6 @@
 package DAO.Impl;
 
+import Classes.Deliveries;
 import Classes.Products;
 import Classes.Provision;
 import DAO.ProvisionDAO;
@@ -9,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaQuery;
+import java.sql.Date;
 import java.util.List;
 
 public class ProvisionDAOImpl implements ProvisionDAO {
@@ -75,5 +77,25 @@ public class ProvisionDAOImpl implements ProvisionDAO {
         List<Provision> data = session.createQuery(criteria).getResultList();
         session.close();
         return data;
+    }
+
+    @Override
+    public List<Provision> findProvisionsByDateAfter(Date date) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Provision> query = session.createQuery("FROM Provision d WHERE d.date_prov >= :param", Provision.class)
+                .setParameter("param", date);
+        List<Provision> tmp = query.getResultList();
+        session.close();
+        return tmp;
+    }
+
+    @Override
+    public List<Provision> findProvisionsByDateBefore(Date date) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Provision> query = session.createQuery("FROM Provision d WHERE d.date_prov <= :param", Provision.class)
+                .setParameter("param", date);
+        List<Provision> tmp = query.getResultList();
+        session.close();
+        return tmp;
     }
 }

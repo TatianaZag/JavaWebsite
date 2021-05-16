@@ -1,6 +1,7 @@
 package DAO;
 import Classes.Provision;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface ProvisionDAO {
@@ -11,4 +12,6 @@ public interface ProvisionDAO {
     List<Provision> readByIdProduct(int id);
     List<Provision> readByIdCustomer(int id);
     List<Provision> readAllProvision();
+    List<Provision> findProvisionsByDateAfter(Date date);
+    List<Provision> findProvisionsByDateBefore(Date date);
 }

@@ -28,43 +28,43 @@
         <input type="hidden" name="id_product" th:value="${products.getId_product()}">
         <label class="all-text">Наименование товара</label>
         <br>
-        <input type="text" class="form-control" name="name_product" th:value="${products.getName_product()}">
+        <input type="text" class="form-control" name="name_product" th:value="${products.getName_product()}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Вид</label>
         <br>
-        <input type="text" class="form-control" name="type_prod" th:value="${products.getType_prod()}">
+        <input type="text" class="form-control" name="type_prod" th:value="${products.getType_prod()}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Количество товара</label>
         <br>
-        <input type="text" class="form-control" name="count_prod" th:value="${products.getCount_prod()}">
+        <input type="text" class="form-control" name="count_prod" th:value="${products.getCount_prod()}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Единицы измерения</label>
         <br>
-        <input type="text" class="form-control" name="unit_measure" th:value="${products.getUnit_measure()}">
+        <input type="text" class="form-control" name="unit_measure" th:value="${products.getUnit_measure()}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Время хранения товара</label>
         <br>
-        <input type="date" class="form-control" name="date_prod" th:value="${products.getDate_prod()}">
+        <input type="date" class="form-control" name="date_prod" th:value="${products.getDate_prod()}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Место хранения товара</label>
         <br>
-        <input type="text" class="form-control" name="storage_location" th:value="${products.getStorage_location()}">
+        <input type="text" class="form-control" name="storage_location" th:value="${products.getStorage_location()}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Поставщик</label>
         <br>
-        <input type="text" class="form-control" name="supplier" th:value="${products.getId_supplier().id_supplier}">
+        <input type="text" class="form-control" name="supplier" th:value="${products.getId_supplier().id_supplier}" required>
       </div>
       <br>
       <div>

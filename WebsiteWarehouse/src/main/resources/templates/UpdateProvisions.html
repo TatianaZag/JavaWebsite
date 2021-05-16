@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Поставки</title>
+    <title>Отфильтрованные поставки</title>
     <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
     <link rel="stylesheet" type="text/css" href="../static/tables.css" th:href="@{/tables.css}" />
     <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
@@ -31,29 +31,29 @@
         <div class="content-tbl">
             <table class="tbl">
                 <tr>
-                    <th>Код поставщика</th>
+                    <th>Код клиента</th>
                     <th>Код товара</th>
                     <th>Кол-во</th>
-                    <th>Дата поставки</th>
-                    <th>Срок хранения</th>
+                    <th>Дата выдачи</th>
+                    <th>Статус</th>
                 </tr>
-                <tr th:if="${#lists.isEmpty(deliveries)}">
-                    <td colspan="16">Нет поставок</td>
+                <tr th:if="${#lists.isEmpty(filter_provisions)}">
+                    <td colspan="16">Нет выдач</td>
                 </tr>
-                <tr th:each="deliv : ${deliveries}">
-                    <td><a class="text-link" th:href="'/edit-delivery?id_delivery=' + ${deliv.getId_deliveries()}"><span th:text="${deliv.getId_supplier().id_supplier}"></span></a></td>
-                    <td><span th:text="${deliv.getId_product().id_product}"></span></td>
-                    <td><span th:text="${deliv.getCount_prod()}"></span></td>
-                    <td><span th:text="${deliv.getDate_deliver()}"></span></td>
-                    <td><span th:text="${deliv.getStorage_time()}"></span></td>
+                <tr th:each="prov : ${filter_provisions}">
+                    <td><a class="text-link" th:href="'/edit-provision?id_provision=' + ${prov.getId_provision()}"><span th:text="${prov.getId_customer().id_customer}"></span></a></td>
+                    <td><span th:text="${prov.getId_product().id_product}"></span></td>
+                    <td><span th:text="${prov.getCount_prod()}"></span></td>
+                    <td><span th:text="${prov.getDate_prov()}"></span></td>
+                    <td><span th:text="${prov.getStatus()}"></span></td>
                 </tr>
             </table>
         </div>
         <br>
         <div class="content-btn">
             <ul class="navigation">
-                <li><a href="/add-new-delivery" role="button">Добавить</a></li>
-                <li><a href="/filter-delivery" role="button">Фильтровать</a></li>
+                <li><a href="/add-new-provision" role="button">Добавить</a></li>
+                <li><a href="/provision" role="button">Вернуться</a></li>
             </ul>
         </div>
     </div>

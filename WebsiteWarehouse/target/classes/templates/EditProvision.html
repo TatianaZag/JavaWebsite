@@ -28,31 +28,31 @@
                 <input type="hidden" name="id_provision" th:value="${provision.getId_provision()}">
                 <label class="all-text">Код клиента</label>
                 <br>
-                <input type="text" class="form-control" name="id_customer" th:value="${provision.getId_customer().id_customer}">
+                <input type="text" class="form-control" name="id_customer" th:value="${provision.getId_customer().id_customer}" required>
             </div>
             <div class="field-form">
                 <br>
                 <label class="all-text">Код товара</label>
                 <br>
-                <input type="text" class="form-control" name="id_product" th:value="${provision.getId_product().id_product}">
+                <input type="text" class="form-control" name="id_product" th:value="${provision.getId_product().id_product}" required>
             </div>
             <div class="field-form">
                 <br>
                 <label class="all-text">Количество товара</label>
                 <br>
-                <input type="text" class="form-control" name="count_prod" th:value="${provision.getCount_prod()}">
+                <input type="text" class="form-control" name="count_prod" th:value="${provision.getCount_prod()}" required>
             </div>
             <div class="field-form">
                 <br>
                 <label class="all-text">Дата выдачи</label>
                 <br>
-                <input type="date" class="form-control" name="date_prov" th:value="${provision.getDate_prov()}">
+                <input type="date" class="form-control" name="date_prov" th:value="${provision.getDate_prov()}" required>
             </div>
             <div class="field-form">
                 <br>
                 <label class="all-text">Статус</label>
                 <br>
-                <input type="text" class="form-control" name="status" th:value="${provision.getStatus()}">
+                <input type="text" class="form-control" name="status" th:value="${provision.getStatus()}" required>
             </div>
             <br>
             <div>

@@ -4,6 +4,7 @@ import Classes.*;
 import Services.CustomersServices;
 import Services.ProvisionServices;
 import Services.ProductsServices;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -89,5 +90,33 @@ public class ProvisionsController {
         provisionServices.deleteProvision(useless_provision);
 
         return "redirect:/provision";
+    }
+
+    @GetMapping("/filter-provision")
+    public String filtration(Model model) {
+        return "FiltrationProvisions";
+    }
+
+    @PostMapping("/filtrated-prov")
+    public String filterProvision(@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(name = "date_after", required = false) java.util.Date date_after,
+                                @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(name = "date_before", required = false) java.util.Date date_before,
+                                Model model) {
+        List<Provision> prod_after = provisionServices.readProvisionAll();
+        List<Provision> prod_before = provisionServices.readProvisionAll();
+
+        if(date_after != null) {
+            Date sql_date_after = new Date(date_after.getTime());
+            prod_after = provisionServices.findProvisionByDA(sql_date_after);
+        }
+        if(date_before != null) {
+            Date sql_date_before = new Date(date_before.getTime());
+            prod_before = provisionServices.findProvisionByDB(sql_date_before);
+        }
+
+        prod_after.retainAll(prod_before);
+
+        model.addAttribute("filter_provisions", prod_after);
+
+        return "UpdateProvisions";
     }
 }

@@ -1,6 +1,7 @@
 package DAO.Impl;
 
 import Classes.Products;
+import Classes.Suppliers;
 import DAO.ProductsDAO;
 import Utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
@@ -88,10 +89,10 @@ public class ProductsDAOImpl implements ProductsDAO {
     }
 
     @Override
-    public List<Products> findProductByIdSupplier(int id) {
+    public List<Products> findProductByIdSupplier(Suppliers supplier) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Products> query = session.createQuery("FROM Products d WHERE d.id_supplier = :param", Products.class)
-                .setParameter("param", id);
+        Query<Products> query = session.createQuery("SELECT d FROM Products d WHERE d.id_supplier = :param", Products.class)
+                .setParameter("param", supplier);
         List<Products> tmp = query.getResultList();
         session.close();
         return tmp;

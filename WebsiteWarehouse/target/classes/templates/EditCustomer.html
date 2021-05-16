@@ -28,7 +28,7 @@
                 <input type="hidden" name="id_customer" th:value="${customer.getId_customer()}">
                 <label class="all-text">Наименование клиента</label>
                 <br>
-                <input type="text" class="form-control" name="name_customer" th:value="${customer.getName_customer()}">
+                <input type="text" class="form-control" name="name_customer" th:value="${customer.getName_customer()}" required>
             </div>
             <div class="field-form">
                 <br>
@@ -36,25 +36,25 @@
                 <br>
                 <label class="not-all-text">1 - юр.лицо; 2 - физ.лицо</label>
                 <br>
-                <input type="text" class="form-control" name="id_type" th:value="${customer.getId_type()}">
+                <input type="text" class="form-control" name="id_type" th:value="${customer.getId_type()}" required>
             </div>
             <div class="field-form">
                 <br>
                 <label class="all-text">Электронная почта</label>
                 <br>
-                <input type="text" class="form-control" name="email" th:value="${customer.getEmail()}">
+                <input type="text" class="form-control" name="email" th:value="${customer.getEmail()}" required>
             </div>
             <div class="field-form">
                 <br>
                 <label class="all-text">Номер телефона</label>
                 <br>
-                <input type="text" class="form-control" name="number_phone" th:value="${customer.getNumber_phone()}">
+                <input type="text" class="form-control" name="number_phone" th:value="${customer.getNumber_phone()}" required>
             </div>
             <div class="field-form">
                 <br>
                 <label class="all-text">Адрес</label>
                 <br>
-                <input type="text" class="form-control" name="address" th:value="${customer.getAddress()}">
+                <input type="text" class="form-control" name="address" th:value="${customer.getAddress()}" required>
             </div>
             <br>
             <div>

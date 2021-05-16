@@ -28,31 +28,31 @@
         <input type="hidden" name="id_delivery" th:value="${deliveries.getId_deliveries()}">
         <label class="all-text">Код поставщика</label>
         <br>
-        <input type="text" class="form-control" name="id_supplier" th:value="${deliveries.getId_supplier().id_supplier}">
+        <input type="text" class="form-control" name="id_supplier" th:value="${deliveries.getId_supplier().id_supplier}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Код товара</label>
         <br>
-        <input type="text" class="form-control" name="id_product" th:value="${deliveries.getId_product().id_product}">
+        <input type="text" class="form-control" name="id_product" th:value="${deliveries.getId_product().id_product}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Количество товара</label>
         <br>
-        <input type="text" class="form-control" name="count_prod" th:value="${deliveries.getCount_prod()}">
+        <input type="text" class="form-control" name="count_prod" th:value="${deliveries.getCount_prod()}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Дата поставки</label>
         <br>
-        <input type="date" class="form-control" name="date_deliver" th:value="${deliveries.getDate_deliver()}">
+        <input type="date" class="form-control" name="date_deliver" th:value="${deliveries.getDate_deliver()}" required>
       </div>
       <div class="field-form">
         <br>
         <label class="all-text">Срок хранения</label>
         <br>
-        <input type="text" class="form-control" name="storage_time" th:value="${deliveries.getStorage_time()}">
+        <input type="text" class="form-control" name="storage_time" th:value="${deliveries.getStorage_time()}" required>
       </div>
       <br>
       <div>

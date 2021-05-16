@@ -6,6 +6,7 @@ import Classes.Suppliers;
 import Services.DeliveriesServices;
 import Services.ProductsServices;
 import Services.SuppliersServices;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -90,5 +91,33 @@ public class DeliveriesController {
         deliveriesServices.deleteDelivery(useless_delivery);
 
         return "redirect:/deliveries";
+    }
+
+    @GetMapping("/filter-delivery")
+    public String filtration(Model model) {
+        return "FiltrationDeliveries";
+    }
+
+    @PostMapping("/filtrated-del")
+    public String filterProduct(@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(name = "date_after", required = false) java.util.Date date_after,
+                                @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(name = "date_before", required = false) java.util.Date date_before,
+                                Model model) {
+        List<Deliveries> prod_after = deliveriesServices.readDeliveriesAll();
+        List<Deliveries> prod_before = deliveriesServices.readDeliveriesAll();
+
+        if(date_after != null) {
+            Date sql_date_after = new Date(date_after.getTime());
+            prod_after = deliveriesServices.findDeliveryByDA(sql_date_after);
+        }
+        if(date_before != null) {
+            Date sql_date_before = new Date(date_before.getTime());
+            prod_before = deliveriesServices.findDeliveryByDB(sql_date_before);
+        }
+
+        prod_after.retainAll(prod_before);
+
+        model.addAttribute("filter_deliveries", prod_after);
+
+        return "UpdateDeliveries";
     }
 }

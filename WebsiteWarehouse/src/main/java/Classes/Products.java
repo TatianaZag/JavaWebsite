@@ -78,7 +78,7 @@ public class Products {
     public void setStorage_location(String storage_location) { this.storage_location = storage_location; }
 
     @ManyToOne(targetEntity=Suppliers.class)
-    @JoinColumn(name = "id_supplier")
+    @JoinColumn(nullable = false, name = "id_supplier")
     public Suppliers getId_supplier() {
         return id_supplier;
     }

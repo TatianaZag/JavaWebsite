@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Поставки</title>
+    <title>Отфильтрованные поставки</title>
     <link rel="stylesheet" type="text/css" href="../static/navigation.css" th:href="@{/navigation.css}" />
     <link rel="stylesheet" type="text/css" href="../static/tables.css" th:href="@{/tables.css}" />
     <link rel="stylesheet" type="text/css" href="../static/layout.css" th:href="@{/layout.css}" />
@@ -23,10 +23,6 @@
 </header>
 
 <div class="container">
-    <div class="col-1">
-
-    </div>
-
     <div class="col-2">
         <div class="content-tbl">
             <table class="tbl">
@@ -37,11 +33,11 @@
                     <th>Дата поставки</th>
                     <th>Срок хранения</th>
                 </tr>
-                <tr th:if="${#lists.isEmpty(deliveries)}">
+                <tr th:if="${#lists.isEmpty(filter_deliveries)}">
                     <td colspan="16">Нет поставок</td>
                 </tr>
-                <tr th:each="deliv : ${deliveries}">
-                    <td><a class="text-link" th:href="'/edit-delivery?id_delivery=' + ${deliv.getId_deliveries()}"><span th:text="${deliv.getId_supplier().id_supplier}"></span></a></td>
+                <tr th:each="deliv : ${filter_deliveries}">
+                    <td><a class="text-link" th:href="'/edit-delivery?id_delivery=' + ${deliv.getId_supplier()}"><span th:text="${deliv.getId_supplier().id_supplier}"></span></a></td>
                     <td><span th:text="${deliv.getId_product().id_product}"></span></td>
                     <td><span th:text="${deliv.getCount_prod()}"></span></td>
                     <td><span th:text="${deliv.getDate_deliver()}"></span></td>
@@ -53,7 +49,7 @@
         <div class="content-btn">
             <ul class="navigation">
                 <li><a href="/add-new-delivery" role="button">Добавить</a></li>
-                <li><a href="/filter-delivery" role="button">Фильтровать</a></li>
+                <li><a href="/deliveries" role="button">Вернуться</a></li>
             </ul>
         </div>
     </div>

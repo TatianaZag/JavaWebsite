@@ -5,6 +5,7 @@ import Classes.Products;
 import DAO.DeliveriesDAO;
 import DAO.Impl.DeliveriesDAOImpl;
 
+import java.sql.Date;
 import java.util.List;
 
 public class DeliveriesServices {
@@ -35,5 +36,13 @@ public class DeliveriesServices {
 
     public List<Deliveries> readDeliveriesAll() {
         return deliveriesDAO.readAllDeliveries();
+    }
+
+    public List<Deliveries> findDeliveryByDB(Date date) {
+        return deliveriesDAO.findDeliveriesByDateBefore(date);
+    }
+
+    public List<Deliveries> findDeliveryByDA(Date date) {
+        return deliveriesDAO.findDeliveriesByDateAfter(date);
     }
 }

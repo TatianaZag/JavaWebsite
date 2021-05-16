@@ -38,6 +38,19 @@ div#mini-cntr {
     text-align: center;
 }
 
+div#mini-cntr-error {
+    width: 800px;
+    background: #e1e1e1;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 140px;
+    text-align: center;
+}
+
 div#mini-cntr-text {
     border-radius: 25px;
     width: 500px;
@@ -66,8 +79,12 @@ div.col-1 {
 
 div.col-2 {
     width: 75%;
-    float: right;
     background: #e1e1e1;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .content-tbl, .content-btn {

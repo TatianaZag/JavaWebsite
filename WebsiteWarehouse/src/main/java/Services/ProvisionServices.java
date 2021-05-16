@@ -1,10 +1,12 @@
 package Services;
 
+import Classes.Deliveries;
 import Classes.Products;
 import Classes.Provision;
 import DAO.Impl.ProvisionDAOImpl;
 import DAO.ProvisionDAO;
 
+import java.sql.Date;
 import java.util.List;
 
 public class ProvisionServices {
@@ -35,5 +37,13 @@ public class ProvisionServices {
 
     public List<Provision> readProvisionAll() {
         return provisionDAO.readAllProvision();
+    }
+
+    public List<Provision> findProvisionByDB(Date date) {
+        return provisionDAO.findProvisionsByDateBefore(date);
+    }
+
+    public List<Provision> findProvisionByDA(Date date) {
+        return provisionDAO.findProvisionsByDateAfter(date);
     }
 }
