@@ -1,11 +1,14 @@
 # JavaWebsite
 
-![alt text](https://sun9-49.userapi.com/impf/3cVykD2_SFpd0PioNO6LRgONjCZIPfFQrDwxog/3pQnCKxFbp8.jpg?size=1920x1080&quality=96&proxy=1&sign=c331203b84c55eb543548752a9cc9abe&type=album)
-![alt text](https://sun9-7.userapi.com/impf/kRsZmOJqLY-zGgH_6BnDTcbgedVfvD8elHq7pA/caUrmZrhIHI.jpg?size=1920x1077&quality=96&proxy=1&sign=09656a754f8ff5e1c577d5216e8fba47&type=album)
-![alt text](https://sun9-73.userapi.com/impf/pWA914dFCXguHmYym0vOkttywcDIubDlQjd_-A/mgmqkkPP17I.jpg?size=1920x1077&quality=96&proxy=1&sign=6e8705d3b4c4b4f20d097ed3e1162c6e&type=album)
-![alt text](https://sun9-53.userapi.com/impf/tNxJz2FeNm97j-j5WDelJ4WTJHomJUCZ-w6U2w/POLVxwcNHkE.jpg?size=1920x1078&quality=96&proxy=1&sign=2af3bcd3cc34c2833e16d2cea0967eb5&type=album)
-![alt text](https://sun9-75.userapi.com/impf/mLdkv3PNLXrGSK1252VuK8Lcx0XTnWUydG8I-w/DghCMfcrXnE.jpg?size=1920x1077&quality=96&proxy=1&sign=ec1dd0b8a627205d7b2fe10618c89767&type=album)
-![alt text](https://sun9-55.userapi.com/impf/Jc1UUKGdXZ5aVJeDNxFNC783JY-wvFRTbGLKEg/qBKk8M4__ag.jpg?size=1919x1035&quality=96&proxy=1&sign=ca568ff07f601a487fc8ac0510493bff&type=album)
+![alt text](https://sun9-23.userapi.com/impg/UnScEP_8iHZAr7o7HhyQp0UqY7_G38iWmao06w/elexGxEdWtE.jpg?size=1611x904&quality=96&sign=a8adf9386ca7ac0d56cbbee5cb0770b7&type=album)
+![alt text](https://sun9-61.userapi.com/impg/f_d6F9ZWPg143lnkK6kYGjER6JLysJEfYIeF1g/AJAmQU8zs0g.jpg?size=1609x897&quality=96&sign=0549166f4aa974b3600aec470c9ea2e4&type=album)
+![alt text](https://sun9-70.userapi.com/impg/iSG9Sg7-HogzHULue7aFboZefMZlJ-dISOI0Ew/dofZG_6s1e4.jpg?size=1606x898&quality=96&sign=aee8f5318e884b24a46a1a4556d7f83d&type=album)
+![alt text](https://sun9-4.userapi.com/impg/DZQjB-qVT-Y4FPDhDIxyjWZHBnSHBanHyMcuvA/GNj3m64UXt0.jpg?size=1607x895&quality=96&sign=bed8a16d43f477b124720539ffb40c85&type=album)
+![alt text](https://sun9-30.userapi.com/impg/rUZxBGL87O7Pgh7vRBWDS7HvyHKE6QxdJwLmPg/DnSMyY_l4QM.jpg?size=1606x893&quality=96&sign=431c3218974e79e9ca86df46e2764a0a&type=album)
+![alt text](https://sun9-19.userapi.com/impg/7Y_ZVEJ_lnnPyIQc7ZLqsodcmc35tcNZYEmc9A/DR0kZnGe2UM.jpg?size=1608x894&quality=96&sign=aeaba18b9575e4019504e20599b03dc6&type=album)
+![alt text](https://sun9-6.userapi.com/impg/lg1sZv487KBTjOIiuUXpKccFYidPuv5muWjFBg/Jubeq668lzc.jpg?size=1607x891&quality=96&sign=3096ed80da8b897469c84ed59eb74251&type=album)
+![alt text](https://sun9-2.userapi.com/impg/_xqysE5yFgqQjYFPboH3XKgxpx9qaTVwB8VEMA/DxQb-HUEHhQ.jpg?size=1607x898&quality=96&sign=17f1987b5c625439a6f4d429207999a1&type=album)
+![alt text](https://sun9-2.userapi.com/impg/uTBZKt4IrcnFDihd9zYSoGrhWMncm-felkRuiQ/S9ITwX2xbe4.jpg?size=1608x898&quality=96&sign=98145b9d420cf8c067f5680b99b33983&type=album)
 
 # Сценарии использования
 ### Получение списка имеющихся товаров по видам, сроку хранения, поставщику и пр. 
