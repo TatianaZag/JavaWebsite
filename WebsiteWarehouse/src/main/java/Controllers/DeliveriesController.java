@@ -42,9 +42,32 @@ public class DeliveriesController {
                              @RequestParam(name = "storage_time") int storage_time,
                              Model model) {
         Deliveries new_delivery;
+        Products product;
+        Suppliers supplier;
 
-        Products product = productsServices.readProductById(iproduct);
-        Suppliers supplier = suppliersServices.readSupplierById(isupplier);
+        if (iproduct > 0) {
+            product = productsServices.readProductById(iproduct);
+            if (product == null) {
+                model.addAttribute("error", "Not exist product");
+                return "pageError";
+            }
+        }
+        else {
+            model.addAttribute("error", "Deliveries create error");
+            return "pageError";
+        }
+
+        if(isupplier > 0) {
+            supplier = suppliersServices.readSupplierById(isupplier);
+            if (supplier == null) {
+                model.addAttribute("error", "Not exist supplier");
+                return "pageError";
+            }
+        }
+        else {
+            model.addAttribute("error", "Deliveries create error");
+            return "pageError";
+        }
 
         new_delivery = new Deliveries(product, supplier, count_prod, date_deliver,
                 storage_time);
@@ -69,9 +92,32 @@ public class DeliveriesController {
                               @RequestParam(name = "id_delivery") int id_delivery,
                               Model model) {
         Deliveries old_delivery = deliveriesServices.readDeliveryById(id_delivery);
+        Products product;
+        Suppliers supplier;
 
-        Products product = productsServices.readProductById(iproduct);
-        Suppliers supplier = suppliersServices.readSupplierById(isupplier);
+        if (iproduct > 0) {
+            product = productsServices.readProductById(iproduct);
+            if (product == null) {
+                model.addAttribute("error", "Not exist product");
+                return "pageError";
+            }
+        }
+        else {
+            model.addAttribute("error", "Provision update error");
+            return "pageError";
+        }
+
+        if(isupplier > 0) {
+            supplier = suppliersServices.readSupplierById(isupplier);
+            if (supplier == null) {
+                model.addAttribute("error", "Not exist supplier");
+                return "pageError";
+            }
+        }
+        else {
+            model.addAttribute("error", "Product update error");
+            return "pageError";
+        }
 
         old_delivery.setId_product(product);
         old_delivery.setId_supplier(supplier);

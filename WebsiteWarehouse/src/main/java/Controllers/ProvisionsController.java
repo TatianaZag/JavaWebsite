@@ -40,9 +40,32 @@ public class ProvisionsController {
                              @RequestParam(name = "status") String status,
                              Model model) {
         Provision new_provision;
+        Products product;
+        Customers customer;
 
-        Products product = productsServices.readProductById(iproduct);
-        Customers customer = customersServices.readCustomerById(icustomer);
+        if (iproduct > 0) {
+            product = productsServices.readProductById(iproduct);
+            if (product == null) {
+                model.addAttribute("error", "Not exist product");
+                return "pageError";
+            }
+        }
+        else {
+            model.addAttribute("error", "Provision create error");
+            return "pageError";
+        }
+
+        if (icustomer > 0) {
+            customer = customersServices.readCustomerById(icustomer);
+            if (customer == null) {
+                model.addAttribute("error", "Not exist customer");
+                return "pageError";
+            }
+        }
+        else {
+            model.addAttribute("error", "Provision create error");
+            return "pageError";
+        }
 
         new_provision = new Provision(product, customer, count_prod, date_prov,
                 status);
@@ -67,9 +90,32 @@ public class ProvisionsController {
                                @RequestParam(name = "id_provision") int id_provision,
                                Model model) {
         Provision old_provision = provisionServices.readProvisionById(id_provision);
+        Products product;
+        Customers customer;
 
-        Products product = productsServices.readProductById(iproduct);
-        Customers customer = customersServices.readCustomerById(icustomer);
+        if (iproduct > 0) {
+            product = productsServices.readProductById(iproduct);
+            if (product == null) {
+                model.addAttribute("error", "Not exist product");
+                return "pageError";
+            }
+        }
+        else {
+            model.addAttribute("error", "Provision update error");
+            return "pageError";
+        }
+
+        if (icustomer > 0) {
+            customer = customersServices.readCustomerById(icustomer);
+            if (customer == null) {
+                model.addAttribute("error", "Not exist customer");
+                return "pageError";
+            }
+        }
+        else {
+            model.addAttribute("error", "Provision update error");
+            return "pageError";
+        }
 
         old_provision.setId_product(product);
         old_provision.setId_customer(customer);

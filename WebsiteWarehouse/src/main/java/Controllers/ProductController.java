@@ -44,6 +44,10 @@ public class ProductController {
         Suppliers supplier;
         if(isupplier > 0) {
             supplier = suppliersServices.readSupplierById(isupplier);
+            if (supplier == null) {
+                model.addAttribute("error", "Not exist supplier");
+                return "pageError";
+            }
         }
         else {
             model.addAttribute("error", "Product create error");
@@ -91,6 +95,10 @@ public class ProductController {
         Suppliers supplier;
         if(isupplier > 0) {
             supplier = suppliersServices.readSupplierById(isupplier);
+            if (supplier == null) {
+                model.addAttribute("error", "Not exist supplier");
+                return "pageError";
+            }
         }
         else {
             model.addAttribute("error", "Product update error");
