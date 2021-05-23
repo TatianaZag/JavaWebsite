@@ -40,7 +40,10 @@
                 <tr th:if="${#lists.isEmpty(deliveries)}">
                     <td colspan="16">Нет поставок</td>
                 </tr>
-                <tr th:each="deliv : ${deliveries}">
+                <tr th:each="deliv : ${deliveries}" id="infoDelivery">
+                    <form action="/save-edit-delivery" method="post">
+                        <input type="hidden" name="id_delivery" th:value="${deliv.getId_deliveries()}">
+                    </form>
                     <td><a class="text-link" th:href="'/edit-delivery?id_delivery=' + ${deliv.getId_deliveries()}"><span th:text="${deliv.getId_supplier().id_supplier}"></span></a></td>
                     <td><span th:text="${deliv.getId_product().id_product}"></span></td>
                     <td><span th:text="${deliv.getCount_prod()}"></span></td>
@@ -52,7 +55,7 @@
         <br>
         <div class="content-btn">
             <ul class="navigation">
-                <li><a href="/add-new-delivery" role="button">Добавить</a></li>
+                <li><a href="/add-new-delivery" role="button" id="deliveryAdd">Добавить</a></li>
                 <li><a href="/filter-delivery" role="button">Фильтровать</a></li>
             </ul>
         </div>

@@ -38,7 +38,10 @@
           <td colspan="16">Нет товаров</td>
         </tr>
         <tr th:each="prod : ${products}" id="infoProduct">
-          <td><a class="text-link" th:href="'/edit-product?id_product=' + ${prod.getId_product()}"><span th:text="${prod.getName_product()}"></span></a></td>
+          <form action="/save-edit-product" method="post">
+            <input type="hidden" name="id_product" th:value="${prod.getId_product()}">
+          </form>
+          <td><a class="text-link" th:href="'/edit-product?id_product=' + ${prod.getId_product()}" id="editProductBtn"><span th:text="${prod.getName_product()}"></span></a></td>
           <td><span th:text="${prod.getType_prod()}"></span></td>
           <td><span th:text="${prod.getCount_prod()} + ' ' + ${prod.getUnit_measure()}"></span></td>
           <td><span th:text="${prod.getDate_prod()}"></span></td>

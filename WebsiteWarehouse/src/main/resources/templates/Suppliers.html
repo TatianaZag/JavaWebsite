@@ -40,7 +40,10 @@
         <tr th:if="${#lists.isEmpty(supplier)}">
           <td colspan="16">Нет поставщиков</td>
         </tr>
-        <tr th:each="supl : ${supplier}">
+        <tr th:each="supl : ${supplier}" id="infoSupplier">
+          <form action="/save-edit-supplier" method="post">
+            <input type="hidden" name="id_supplier" th:value="${supl.getId_supplier()}">
+          </form>
           <td><a class="text-link" th:href="'/edit-supplier?id_supplier=' + ${supl.getId_supplier()}"><span th:text="${supl.getName_supplier()}"></span></a></td>
           <td><span th:text="${supl.getId_type()}"></span></td>
           <td><span th:text="${supl.getEmail()}"></span></td>
@@ -52,7 +55,7 @@
     <br>
     <div class="content-btn">
       <ul class="navigation">
-        <li><a href="/add-new-supplier" role="button">Добавить</a></li>
+        <li><a href="/add-new-supplier" role="button" id="addSupplier">Добавить</a></li>
       </ul>
     </div>
   </div>

@@ -68,9 +68,9 @@
       </div>
       <br>
       <div>
-        <button type="submit">Изменить</button>
+        <button type="submit" th:id="submitEdit">Изменить</button>
         <ul class="navigation">
-          <li><a role="button" th:href="'/delete-product?id_product=' + ${products.getId_product()}">Удалить</a></li>
+          <li><a id="deleteBtn" role="button" th:href="'/delete-product?id_product=' + ${products.getId_product()}">Удалить</a></li>
         </ul>
       </div>
     </form>
